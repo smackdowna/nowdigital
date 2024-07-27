@@ -9,10 +9,14 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-       " background": "linear-gradient(90.37deg, #D2D5FD 0.32%, #D8DAF8 22.3%, #EFE8E7 49.57%, #FEF3E2 99.68%)",
-       "gradient-button": "linear-gradient(90deg, rgba(0, 17, 255, 0.9) 0%, rgba(255, 183, 0, 0.9) 100%)",
+        "gradient-acc": "linear-gradient(180deg, #FCF2E3 0%, #D3D6FD 100%)",
+        "gradient-footer": "linear-gradient(0deg, #C9CCFF 0%, #A2A9FF 51.5%, #A2A9FF 100%)",
+        "background-take": "linear-gradient(275.8deg, #CFD2FF 1.51%, #E4E6FF 48.1%, #F3F3FF 55.68%, #FEF3E3 100%)",
+        "border-image-source": "linear-gradient(90deg, #0011FF 0%, #FBF1E5 100%)",
+        " background": "linear-gradient(90.37deg, #D2D5FD 0.32%, #D8DAF8 22.3%, #EFE8E7 49.57%, #FEF3E2 99.68%)",
+        "gradient-button": "linear-gradient(90deg, rgba(0, 17, 255, 0.9) 0%, rgba(255, 183, 0, 0.9) 100%)",
         "gradient-light":
-        "linear-gradient(90.37deg, #D2D5FD 0.32%, #D8DAF8 22.3%, #EFE8E7 49.57%, #FEF3E2 99.68%)",
+          "linear-gradient(90.37deg, #D2D5FD 0.32%, #D8DAF8 22.3%, #EFE8E7 49.57%, #FEF3E2 99.68%)",
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
