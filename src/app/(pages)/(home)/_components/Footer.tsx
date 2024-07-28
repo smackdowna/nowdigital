@@ -1,6 +1,7 @@
-import { ICONS, IMAGES } from '@/assets'
-import Image from 'next/image'
-import React from 'react'
+"use client"
+import { ICONS, IMAGES } from '@/assets';
+import Image from 'next/image';
+import React, { useState } from 'react';
 import Link from 'next/link';
 
 const FOOTER_LINKS = [
@@ -46,36 +47,50 @@ const FOOTER_LINKS = [
 ];
 
 const Footer = () => {
+    const [expandedSection, setExpandedSection] = useState < number | null > (null);
+
+    const toggleSection = (index: number) => {
+        setExpandedSection(prev => (prev === index ? null : index));
+    };
+
     return (
-        <div className="relative max-h-[500px]">
+        <div className="relative">
             <Image
-                className="absolute inset-0 w-full h-full object-contain lg:object-cover z-0 object-top"
+                className="absolute inset-0 w-full h-full object-cover z-0"
                 src={IMAGES.footer}
-                alt={"footer"}
+                alt="footer"
             />
-            <div className="relative z-10 max-md:mt-10">
-                <div className="flex max-lg:flex-col justify-between mx-24 items-start pt-[120px] max-lg:gap-10">
-                    <div className="flex flex-col lg:flex-row md:mt-0 gap-[80px]">
+            <div className="relative z-10 pt-[140px] max-lg:pt-[200px] ">
+                <div className="flex flex-col lg:flex-row justify-between mx-6 lg:mx-24 items-start lg:items-center gap-10 lg:gap-0">
+                    <div className="flex flex-col lg:flex-row w-full gap-10 max-lg:gap-2">
                         {FOOTER_LINKS.map((footerLink, i) => (
-                            <ul key={i} className="md:flex hidden flex-col max-lg:flex-row max-lg:justify-between gap-4 py-1 text-[13px] text-[#151D8C] max-lg:w-full">
-                                <span className="text-[17px] leading-[19.92px] font-900">{footerLink.title}</span>
-                                <div className='text-[18px] flex flex-col gap-3 font-serif max-lg:hidden'>
-                                    {footerLink.links.map((link) => (
-                                        <div key={link.label}>
-                                            <li className='text-[15px] font-serif'>
-                                                <Link href={link.href}>{link.label}</Link>
-                                            </li>
-                                        </div>
-                                    ))}
+                            <div key={i} className="flex flex-col gap-4 ">
+                                <div className="flex justify-between items-center lg:items-start lg:block">
+                                    <span className="text-[17px] font-bold">{footerLink.title}</span>
+                                    <Image
+                                        src={IMAGES.plus}
+                                        alt='plus'
+                                        className={`lg:hidden cursor-pointer `}
+                                        onClick={() => toggleSection(i)}
+                                    />
                                 </div>
-                                <Image src={IMAGES.plus} alt='awd' className='lg:hidden' />
-                            </ul>
+                                <ul
+                                    className={`transition-max-height duration-300 ease-in-out overflow-hidden ${expandedSection === i ? 'max-h-40' : 'max-h-0'
+                                        } lg:max-h-full`}
+                                >
+                                    {footerLink.links.map((link) => (
+                                        <li key={link.label} className="text-[15px] text-[#151D8C] py-1">
+                                            <Link href={link.href}>{link.label}</Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
                         ))}
                     </div>
-                    <div className='flex flex-col'>
-                        <div className='w-[270px]'>
+                    <div className="flex flex-col gap-4">
+                        <div className="w-[270px]">
                             <Image src={ICONS.logo} alt='logo' />
-                            <span className='w-[100px]'>Now Digital Easy have been the #1 provider of best business solutions from Karur, India, since 2015</span>
+                            <p>Now Digital Easy have been the #1 provider of best business solutions from Karur, India, since 2015</p>
                         </div>
                         <div className="flex gap-8 py-2 items-center">
                             <Link href="https://cloud.google.com/find-a-partner/partner/now-digital-easy">
@@ -90,7 +105,7 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-                <div className='mx-24 mt-16 flex gap-4 items-center'>
+                <div className='mx-6 lg:mx-24 mt-16 max-md:mt-6 flex gap-4 items-center'>
                     <Image src={ICONS.india} alt='india' />
                     <div className='flex gap-2'>
                         <span>- English</span>
@@ -101,25 +116,30 @@ const Footer = () => {
                         <Image src={ICONS.drop} alt='' className='rotate-180' />
                     </div>
                 </div>
-                <hr className="bg-white h-[2px] mx-24 mt-2" />
-                <div className="px-4 py-4 flex max-md:flex-col max-md:gap-6 justify-between mx-24">
-                    <span className="text-[13px] max-md:text-[10px] text-center md:text-left text-[#151D8C]">
+                <hr className="bg-white h-[2px] mx-6 lg:mx-24 mt-2" />
+                <div className="px-4 pt-2 flex flex-col md:flex-row justify-between items-center mx-6 lg:mx-24 gap-6 max-md:gap-0 md:gap-0">
+                    <span className="text-[13px] text-center md:text-left text-[#151D8C]">
                         @2022 Nowdigitaleasy, Inc. All Rights Reserved.
                     </span>
-                    <div className="flex gap-2 items-center justify-center">
-                        <span className="font-source-sans-pro text-[13px] max-md:text-[9px] text-[#151D8C]">
-                            <Link href={"/privacy-policy"}>Privacy Policy</Link>
-                        </span>
-                        <span className="font-source-sans-pro text-[13px] max-md:text-[9px] text-[#151D8C]">
-                            <Link href={"/usage-terms"}>Terms and Conditions</Link>
-                        </span>
-                        <Image src={ICONS.facebook} alt='fb' />
-                        <Image src={ICONS.insta} alt='fb' />
-                        <Image src={ICONS.linkdin} alt='fb' />
+                    <div className="flex max-md:flex-col items-center justify-center p-2 pb-4 gap-4">
+                        <div>
+                            <span className="font-source-sans-pro text-[12px] text-[#151D8C]">
+                                <Link href={"/privacy-policy"}>Privacy Policy</Link>
+                            </span>
+                            <span className="font-source-sans-pro text-[12px] text-[#151D8C]">
+                                <Link href={"/usage-terms"}>Terms and Conditions</Link>
+                            </span>
+                        </div>
+                        <div className='flex gap-2'>
+                            <Image src={ICONS.facebook} alt='fb' />
+                            <Image src={ICONS.insta} alt='fb' />
+                            <Image src={ICONS.linkdin} alt='fb' />
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    )
+    );
 }
+
 export default Footer;

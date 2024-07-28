@@ -57,7 +57,7 @@ type ButtonProps = {
 };
 
 const Button: React.FC<ButtonProps> = ({ text }) => (
-  <button className="bg-white text-[15px] border-[2px] text-[#0011FF] font-700 border-[#0011FF] p-2 rounded-2xl">
+  <button className="bg-white w-[150px] text-[15px] border-[2px] text-[#0011FF] font-700 border-[#0011FF] p-2 rounded-2xl">
     <span className="">{text}</span>
   </button>
 );
@@ -83,26 +83,28 @@ const Card: React.FC<CardProps> = ({ title, description, imgSrc }) => (
 
 const Organization: React.FC = () => {
   return (
-    <div className='p-10 bg-[#ECEDFF]'>
-      <div className='flex justify-center text-[43px] text-center max-lg:text-[34px] leading-[51.6px] tracking-tighter font-900 mt-10'>
+    <div className='p-10 max-md:p-6 bg-[#ECEDFF]'>
+      <div className='flex justify-center text-[43px] max-md:text-2xl text-center max-lg:text-[34px] leading-[51.6px] tracking-tighter font-900 mt-10'>
         <span>Grow your organization faster than ever</span>
       </div>
       <div className='flex justify-center mt-4'>
-        <div className='bg-border-image-source w-[850px] max-lg:w-[670px] h-2'></div>
+        <div className='bg-border-image-source w-[850px] max-lg:w-[670px] max-md:hidden h-2'></div>
       </div>
-      <div className='flex justify-center mt-10'>
+      <div className='flex justify-center mt-10 max-md:mt-4'>
         <span className='text-center text-[20px] font-serif font-600 w-[600px]'>
           Empower and take your business to the next level with our comprehensive approach.
         </span>
       </div>
-      <div className="flex justify-center">
+      <div className="flex justify-center mx-16 max-lg:mx-1">
         <div className="flex gap-4 mt-8 overflow-x-scroll hide-scrollbar">
           {["Domain", "Hosting", "Website Builder", "Marketing Studio", "Google Ads", "Vision Now", "Mails Now", "Chat Now", "Nmail", "Spot Now", "Peoples Now"].map((text) => (
-            <Button key={text} text={text} />
+            <div key={text}>
+              <Button text={text} />
+            </div>
           ))}
         </div>
       </div>
-      <div className="flex justify-center flex-wrap gap-6 mt-10">
+      <div className="flex justify-center flex-wrap gap-6 max-lg:gap-10 mt-10">
         {cardData.map((card, index) => (
           <Card
             key={index}

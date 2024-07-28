@@ -4,10 +4,10 @@ import { IMAGES } from "@/assets"
 const TakeStepNow = () => {
     return (
         <div className=' bg-background-take p-10 flex flex-col gap-4 pb-20'>
-            <div className=" text-[43px] max-lg:text-3xl font-900 text-center mt-20 ">
+            <div className=" text-[43px] max-lg:text-3xl max-md:text-2xl font-900 text-center mt-20 ">
                 <span>Transform Your Vision into Reality</span>
             </div>
-            <div className=" font-900 text-[30px] max-lg:text-2xl text-center">
+            <div className=" font-900 text-[30px] max-lg:text-2xl max-md:text-lg max-md:font-normal text-center opacity-70">
                 <span>Take the first step with us!</span>
             </div>
             <div className=" flex justify-center">

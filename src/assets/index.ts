@@ -43,6 +43,10 @@ import cardbrand6 from "@/assets/images/brand3.svg"
 import author1 from "@/assets/images/Group 69412.svg"
 import plus from "@/assets/images/plus.svg"
 import author2 from "@/assets/icons/Group 69413.svg"
+import menu from "@/assets/icons/menu.svg"
+import dot from "@/assets/images/Ellipse 262.svg"
+
+
 
 
 
@@ -61,7 +65,8 @@ import author2 from "@/assets/icons/Group 69413.svg"
     brand,
     card,
     arrowleft,
-    author2
+    author2,
+    menu
   };
 
   const IMAGES = {
@@ -83,7 +88,8 @@ import author2 from "@/assets/icons/Group 69413.svg"
     cardbrand5,
     cardbrand6,
     author1,
-    plus
+    plus,
+    dot
   }
   
   export { IMAGES, ICONS };
