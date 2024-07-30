@@ -70,12 +70,12 @@ type CardProps = {
 };
 
 const Card: React.FC<CardProps> = ({ title, description, imgSrc }) => (
-  <div className='bg-[#FFFBF0] w-[280px] h-[275px] rounded-[10px] pt-4 hover:scale-105 hover:border-[#0011FF] hover:border-[2px] duration-500'>
+  <div className='bg-[#FFFBF0] w-[282px] h-[275px] rounded-[10px] pt-4 hover:scale-105 hover:border-[#0011FF] hover:border-[2px] duration-500'>
     <Image src={imgSrc} alt={title} className="m-3" />
     <div className="flex gap-4 m-2">
-      <span className="text-[22px] leading-[28.13px] tracking-tighter font-900">{title}</span>
+      <span className="text-[22px] leading-[28.13px] tracking-tighter font-900 ">{title}</span>
     </div>
-    <div className="text-[#000334] font-serif -tracking-wide mt-3 text-[17px] m-3 font-400 opacity-50">
+    <div className="text-[#000334] font-serif tracking-tighter mt-3 text-[17px] m-3 font-400 opacity-50 w-[250px]">
       <span>{description}</span>
     </div>
   </div>

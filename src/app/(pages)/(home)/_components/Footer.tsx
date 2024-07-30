@@ -1,8 +1,13 @@
-"use client"
+"use client";
 import { ICONS, IMAGES } from '@/assets';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import Link from 'next/link';
+
+// Define currency and corresponding flag images
+const CURRENCY_FLAGS = {
+    INR: ICONS.india, // Use your flag image path here
+};
 
 const FOOTER_LINKS = [
     {
@@ -47,10 +52,15 @@ const FOOTER_LINKS = [
 ];
 
 const Footer = () => {
-    const [expandedSection, setExpandedSection] = useState < number | null > (null);
+    const [expandedSection, setExpandedSection] = useState<number | null>(null);
+    const [currency, setCurrency] = useState('₹INR');
 
     const toggleSection = (index: number) => {
         setExpandedSection(prev => (prev === index ? null : index));
+    };
+
+    const handleCurrencyChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        setCurrency(event.target.value);
     };
 
     return (
@@ -60,17 +70,17 @@ const Footer = () => {
                 src={IMAGES.footer}
                 alt="footer"
             />
-            <div className="relative z-10 pt-[140px] max-lg:pt-[200px] ">
+            <div className="relative z-10 pt-[140px] max-lg:pt-[200px]">
                 <div className="flex flex-col lg:flex-row justify-between mx-6 lg:mx-24 items-start lg:items-center gap-10 lg:gap-0">
                     <div className="flex flex-col lg:flex-row w-full gap-10 max-lg:gap-2">
                         {FOOTER_LINKS.map((footerLink, i) => (
-                            <div key={i} className="flex flex-col gap-4 ">
+                            <div key={i} className="flex flex-col gap-4">
                                 <div className="flex justify-between items-center lg:items-start lg:block">
-                                    <span className="text-[17px] font-bold">{footerLink.title}</span>
+                                    <span className="text-[18px] font-bold">{footerLink.title}</span>
                                     <Image
                                         src={IMAGES.plus}
                                         alt='plus'
-                                        className={`lg:hidden cursor-pointer `}
+                                        className={`lg:hidden cursor-pointer`}
                                         onClick={() => toggleSection(i)}
                                     />
                                 </div>
@@ -79,7 +89,7 @@ const Footer = () => {
                                         } lg:max-h-full`}
                                 >
                                     {footerLink.links.map((link) => (
-                                        <li key={link.label} className="text-[15px] text-[#151D8C] py-1">
+                                        <li key={link.label} className="text-[17px] font-serif text-[#151D8C] pt-1">
                                             <Link href={link.href}>{link.label}</Link>
                                         </li>
                                     ))}
@@ -106,14 +116,24 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className='mx-6 lg:mx-24 mt-16 max-md:mt-6 flex gap-4 items-center'>
-                    <Image src={ICONS.india} alt='india' />
-                    <div className='flex gap-2'>
-                        <span>- English</span>
-                        <Image src={ICONS.drop} alt='' className='rotate-180' />
+                    {/* Flag image and currency dropdown */}
+                    <div className='flex items-center gap-2'>
+                        <Image src={ICONS.india} alt={currency} width={20} height={15} />
+                        <div className='flex gap-2'>
+                            <span>- English</span>
+                            <Image src={ICONS.drop} alt='' className='rotate-180 w-2' />
+                        </div>
                     </div>
-                    <div className='flex gap-2'>
-                        <span>- INR₹</span>
-                        <Image src={ICONS.drop} alt='' className='rotate-180' />
+                    <div className='relative flex gap-2 items-center'>
+                        <select
+                            value={currency}
+                            onChange={handleCurrencyChange}
+                            className="rounded p-1 bg-transparent  outline-none"
+                        >
+                            <option value="₹INR">₹INR</option>
+                            <option value="$USD">$USD</option>
+                            <option value="SGD">$SGD</option>
+                        </select>
                     </div>
                 </div>
                 <hr className="bg-white h-[2px] mx-6 lg:mx-24 mt-2" />
@@ -132,8 +152,8 @@ const Footer = () => {
                         </div>
                         <div className='flex gap-2'>
                             <Image src={ICONS.facebook} alt='fb' />
-                            <Image src={ICONS.insta} alt='fb' />
-                            <Image src={ICONS.linkdin} alt='fb' />
+                            <Image src={ICONS.insta} alt='insta' />
+                            <Image src={ICONS.linkdin} alt='linkedin' />
                         </div>
                     </div>
                 </div>
