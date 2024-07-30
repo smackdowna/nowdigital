@@ -4,8 +4,8 @@ import { ICONS } from "@/assets";
 
 const Navbar = () => {
     return (
-        <div className="z-50">
-            <nav className="relative bg-gradient-light items-center justify-between h-[60px] xl:h-[55px]">
+        <div className="z-50 fixed w-full top-0  left-0 right-0">
+            <nav className="relative bg-transparent items-center justify-between h-[60px] xl:h-[55px]">
                 {/* Logo */}
                 <div className="flex items-center h-full w-full">
                     <div className="bg-white bg-opacity-50 w-[58px] max-lg:w-[38px] max-md:w-[28px] h-full rounded-br-2xl"></div>

@@ -4,15 +4,15 @@ import Image from "next/image";
 const Hero = () => {
     return (
         <div className="bg-gradient-light">
-            <div className=" flex justify-center pt-[170px] max-lg:pt-[100px] max-md:pt-[50px]">
+            <div className=" flex justify-center pt-[170px] max-lg:pt-[100px] ">
                 <div className="flex max-lg:flex-col justify-center items-center gap-10">
-                    <div className="flex flex-col gap-8 max-md:gap-6 items-center lg:items-start lg:justify-start max-w-[600px]">
+                    <div className="flex flex-col gap-8 max-md:gap-6 items-center lg:items-start lg:justify-start max-w-[600px] ">
                         {/* Heading */}
-                        <span className="text-[48px] max-md:text-2xl max-lg:text-3xl max-xl:text-4xl text-center leading-[57.6px] font-900">
+                        <span className="text-[48px] max-md:text-2xl max-lg:text-3xl max-xl:text-4xl text-center tracking-tighter leading-[57.6px] font-900 pr-2">
                             Hey Business Owners
                             <br /> <span className=" text-[#0011FF]">Go Digital</span> Effortlessly
                         </span>
-                        <p className="text-[19px]  max-md:text-justify  max-md:px-12 text-center lg:text-left  text-text-900/80 font-serif  font-medium">
+                        <p className="text-[20px]  max-md:text-justify  max-md:px-12 text-center lg:text-left  text-text-900/80 font-serif  font-medium ">
                             Stop being static! Scale your business by going digital, the easy
                             way, with NDE. We’re technology-enabled and structured for speed and
                             efficiency to meet the ever-changing needs of today’s business.
