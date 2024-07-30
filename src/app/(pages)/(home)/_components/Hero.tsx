@@ -5,7 +5,7 @@ const Hero = () => {
     return (
         <div className="bg-gradient-light">
             <div className=" flex justify-center pt-[170px] max-lg:pt-[100px] ">
-                <div className="flex max-lg:flex-col justify-center items-center gap-10 max-xl:mx-10">
+                <div className="flex max-lg:flex-col justify-center items-center gap-10 max-xl:mx-10 max-lg:mx-0">
                     <div className="flex flex-col gap-8 max-md:gap-6  items-center lg:items-start lg:justify-start max-w-[600px] ">
                         {/* Heading */}
                         <span className="text-[48px] max-md:text-2xl max-lg:text-3xl max-xl:text-4xl text-center tracking-tighter leading-[57.6px] font-900 pr-2">
