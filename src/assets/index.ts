@@ -45,6 +45,8 @@ import plus from "@/assets/images/plus.svg"
 import author2 from "@/assets/icons/Group 69413.svg"
 import menu from "@/assets/icons/menu.svg"
 import dot from "@/assets/images/Ellipse 262.svg"
+import path from "@/assets/images/path18.svg"
+
 
 
 
@@ -89,7 +91,8 @@ import dot from "@/assets/images/Ellipse 262.svg"
     cardbrand6,
     author1,
     plus,
-    dot
+    dot,
+    path
   }
   
   export { IMAGES, ICONS };
