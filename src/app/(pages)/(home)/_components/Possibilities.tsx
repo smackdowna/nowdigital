@@ -63,7 +63,7 @@ const Possibilities: React.FC = () => {
                     >
                         <div className="w-full h-full bg-white rounded-[8px] p-6">
                             <div className="flex gap-4 w-[300px]">
-                                <span className={`text-[24px] font-800 text-home-heading ${hoveredCard === index ? 'font-bold' : ''}`}>
+                                <span className={`text-[24px] font-800 text-home-heading }`}>
                                     {content.title}
                                 </span>
                                 <Image src={hoveredCard === index ? IMAGES.arrowright : ICONS.cardarrow} alt="arrow" className={`${hoveredCard === index ? 'w-[18px]' : ''} duration-300`} />

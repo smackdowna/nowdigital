@@ -37,7 +37,7 @@ const Hero = () => {
                     <div className="aspect-[1.6/1] bg-[#FEF3E3] w-full max-md:w-[380px] max-sm:w-[300px] lg:h-[300px] xl:h-[344px] lg:w-auto rounded-[34px] border-8 md:border-[14px] max-md:border-[10px] border-black"></div>
                 </div>
             </div>
-            <span className="flex text-center text-[17px] font-600 pt-[120px] pb-[40px] leading-[20.4px] text-home-body justify-center font-roboto-serif">
+            <span className="flex text-center text-[20px] font-600 pt-[120px] pb-[40px] leading-[20.4px] text-home-body justify-center font-roboto-serif">
                 12,000+ global businesses trust us to transform & grow digitally
             </span>
             <div className="flex justify-center items-center gap-16 pb-6 overflow-hidden">
