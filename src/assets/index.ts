@@ -12,6 +12,9 @@ import googlereview from "@/assets/icons/image 65.svg"
 import brand from "@/assets/icons/Brand.svg"
 import card from "@/assets/icons/Rectangle 46504.svg"
 import arrowleft from "@/assets/icons/chevrons-right.svg"
+import gol from "@/assets/icons/gol.svg"
+
+
 
 
 
@@ -54,12 +57,6 @@ import home from "@/assets/images/Home Banner.png"
 
 
 
-
-
-
-
-
-
   const ICONS = {
     logo,
     chart,
@@ -76,7 +73,8 @@ import home from "@/assets/images/Home Banner.png"
     card,
     arrowleft,
     author2,
-    menu
+    menu,
+    gol
   };
 
   const IMAGES = {

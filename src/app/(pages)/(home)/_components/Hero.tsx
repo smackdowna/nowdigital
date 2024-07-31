@@ -1,4 +1,4 @@
-import { IMAGES } from "@/assets";
+import { ICONS, IMAGES } from "@/assets";
 import Image from "next/image";
 
 const Hero = () => {
@@ -48,7 +48,7 @@ const Hero = () => {
                 <Image src={IMAGES.brand5} alt="" className="w-[100px] h-[100px]" />
                 <Image src={IMAGES.brand1} alt="" className="w-[100px] h-[100px]" />
                 <Image src={IMAGES.brand7} alt="" className="w-[100px] h-[100px]" />
-                <Image src={IMAGES.brand6} alt="" className="w-[100px] h-[100px]" />
+                <Image src={ICONS.gol} alt="" className="w-[100px] h-[100px]" />
             </div>
         </div>
     );
