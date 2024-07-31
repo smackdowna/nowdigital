@@ -36,7 +36,7 @@ const cardData: CardData[] = [
   },
   {
     imgSrc: IMAGES.cardbrand4,
-    title: "Engage your customers",
+    title: "Maximise leads and conversions",
     description: "Foster stronger relationships with personalised interactions across various channels."
   },
   {
@@ -70,12 +70,12 @@ type CardProps = {
 };
 
 const Card: React.FC<CardProps> = ({ title, description, imgSrc }) => (
-  <div className='bg-[#FFFBF0] w-[282px] h-[275px] rounded-[10px] pt-4 hover:scale-105 hover:border-[#0011FF] hover:border-[2px] duration-500'>
+  <div className='bg-[#FFFBF0] w-[282px] h-[275px] rounded-[10px] group: pt-4 hover:scale-105 hover:border-[#0011FF] hover:border-[2px] duration-300'>
     <Image src={imgSrc} alt={title} className="m-3" />
     <div className="flex gap-4 m-2">
       <span className="text-[22px] text-home-heading leading-[28.13px] tracking-tight font-900 w-[250px] h-[56px] ">{title}</span>
     </div>
-    <div className="text-[#000334] font-serif tracking-tighter mt-3 text-[17px] m-3 font-400  w-[250px]">
+    <div className="text-[#000334] font-serif tracking-tighter hover:opacity-60 mt-3 group: text-[17px] m-3 font-400  w-[250px]">
       <span>{description}</span>
     </div>
   </div>
@@ -96,7 +96,7 @@ const Organization: React.FC = () => {
             Empower and take your business to the next level with our comprehensive approach.
           </span>
         </div>
-        <div className="flex justify-center  max-lg:mx-1">
+        <div className="flex justify-center max-lg:mx-1">
           <div className="flex gap-4 mt-8 overflow-x-scroll hide-scrollbar">
             {["Domain", "Hosting", "Website Builder", "Marketing Studio", "Google Ads", "Vision Now", "Mails Now", "Chat Now", "Nmail", "Spot Now", "Peoples Now"].map((text) => (
               <div key={text}>
@@ -119,5 +119,4 @@ const Organization: React.FC = () => {
     </div>
   );
 };
-
 export default Organization;

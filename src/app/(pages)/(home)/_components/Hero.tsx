@@ -14,7 +14,7 @@ const Hero = () => {
                 />
             </div>
             <div className="relative z-10 flex justify-center pt-[160px] max-lg:pt-[100px]">
-                <div className="flex max-lg:flex-col justify-center items-center gap-16 max-xl:gap-6">
+                <div className="flex max-lg:flex-col justify-center items-center gap-10 max-xl:gap-6">
                     <div className="flex flex-col gap-5 max-md:gap-6 items-center lg:items-start lg:justify-start max-w-[600px]">
                         {/* Heading */}
                         <h1 className="text-[48px] font-roboto max-md:text-2xl max-lg:text-4xl max-xl:text-[40px] text-center tracking-[-2px] text-home-heading leading-[57.6px] font-800">
