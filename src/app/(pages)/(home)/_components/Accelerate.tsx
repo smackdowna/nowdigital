@@ -73,7 +73,7 @@ const Accelerate = () => {
 
     return (
         <div className="bg-gradient-acc max-lg:bg-gradient-acc1 warpper">
-            <div className="px-32 py-10 max-lg:p-4  max-width">
+            <div className="p-10 max-lg:p-4  max-width">
                 <div className="flex justify-center  mt-10">
                     <span className="w-[880px] text-[43px] max-lg:text-4xl max-md:text-2xl text-center leading-[51.6px] text-home-heading font-900">Accelerate Outcomes and Supercharge Experience with Ready to Go Solutions</span>
                 </div>
