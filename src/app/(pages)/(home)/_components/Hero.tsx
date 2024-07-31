@@ -3,16 +3,25 @@ import Image from "next/image";
 
 const Hero = () => {
     return (
-        <div className="bg-gradient-light">
-            <div className=" flex justify-center pt-[160px] max-lg:pt-[100px] ">
+        <div className="relative bg-gradient-light wrapper">
+            <div className="absolute inset-0 z-0">
+                <Image 
+                    src={IMAGES.home} 
+                    alt="home banner" 
+                    layout="fill" 
+                    objectFit="cover" 
+                    quality={100}
+                />
+            </div>
+            <div className="relative z-10 flex justify-center pt-[160px] max-lg:pt-[100px]">
                 <div className="flex max-lg:flex-col justify-center items-center gap-16 max-xl:gap-6">
-                    <div className="flex flex-col gap-5 max-md:gap-6  items-center lg:items-start lg:justify-start max-w-[600px] ">
+                    <div className="flex flex-col gap-5 max-md:gap-6 items-center lg:items-start lg:justify-start max-w-[600px]">
                         {/* Heading */}
-                        <span className="text-[48px] max-md:text-2xl max-lg:text-4xl max-xl:text-[40px] text-center tracking-tighter leading-[55.6px] font-[800] ">
+                        <h1 className="text-[48px] font-roboto max-md:text-2xl max-lg:text-4xl max-xl:text-[40px] text-center tracking-[-2px] text-home-heading leading-[57.6px] font-800">
                             Hey Business Owners
-                            <br /> <span className=" text-[#0011FF]">Go Digital</span> Effortlessly
-                        </span>
-                        <p className="text-[18px]  max-md:text-justify  tracking-wide   max-md:px-12  text-text-900/80 font-serif w-[580px] max-xl:w-[500px] max-md:w-[380px] font-medium ">
+                            <br /> <span className="text-[#0011FF]">Go Digital</span> Effortlessly
+                        </h1>
+                        <p className="text-[18px] font-roboto-serif max-md:text-justify tracking-wide max-md:px-12 text-text-900/80 w-[580px] max-xl:w-[500px] max-md:w-[380px] text-home-body font-400">
                             Stop being static! Scale your business by going digital, the easy
                             way, with NDE. We’re technology-enabled and structured for speed and
                             efficiency to meet the ever-changing needs of today’s business.
@@ -24,22 +33,25 @@ const Hero = () => {
                             </div>
                         </button>
                     </div>
-                    {/* video */}
-                    <div className="aspect-[1.6/1] bg-[#FEF3E3] w-full max-md:w-[380px]  max-sm:w-[300px] lg:h-[300px]  xl:h-[344px] lg:w-auto rounded-[34px] border-8 md:border-[14px] max-md:border-[10px] border-black"></div>
+                    {/* Video Placeholder */}
+                    <div className="aspect-[1.6/1] bg-[#FEF3E3] w-full max-md:w-[380px] max-sm:w-[300px] lg:h-[300px] xl:h-[344px] lg:w-auto rounded-[34px] border-8 md:border-[14px] max-md:border-[10px] border-black"></div>
                 </div>
             </div>
-            <div className=" flex text-center text-[20px] font-900 pt-[100px] pb-[40px] justify-center font-serif">12,000+ global businesses trust us to transform & grow digitally</div>
+            <span className="flex text-center text-[17px] font-600 pt-[120px] pb-[40px] leading-[20.4px] text-home-body justify-center font-roboto-serif">
+                12,000+ global businesses trust us to transform & grow digitally
+            </span>
             <div className="flex justify-center items-center gap-16 pb-6 overflow-hidden">
-                <Image src={IMAGES.brand1} alt="" className=" w-[100px] h-[100px]" />
-                <Image src={IMAGES.brand2} alt="" className=" w-[100px] h-[100px]"/>
-                <Image src={IMAGES.brand3} alt="" className=" w-[100px] h-[100px]"/>
-                <Image src={IMAGES.brand4} alt="" className=" w-[100px] h-[100px]"/>
-                <Image src={IMAGES.brand5} alt="" className=" w-[100px] h-[100px]"/>
-                <Image src={IMAGES.brand6} alt="" className=" w-[100px] h-[100px]"/>
-                <Image src={IMAGES.brand7} alt="" className=" w-[100px] h-[100px]"/>
-                <Image src={IMAGES.brand6} alt="" className=" w-[100px] h-[100px]"/>
+                <Image src={IMAGES.brand2} alt="" className="w-[100px] h-[100px]" />
+                <Image src={IMAGES.brand3} alt="" className="w-[100px] h-[100px]" />
+                <Image src={IMAGES.brand6} alt="" className="w-[100px] h-[100px]" />
+                <Image src={IMAGES.brand4} alt="" className="w-[100px] h-[100px]" />
+                <Image src={IMAGES.brand5} alt="" className="w-[100px] h-[100px]" />
+                <Image src={IMAGES.brand1} alt="" className="w-[100px] h-[100px]" />
+                <Image src={IMAGES.brand7} alt="" className="w-[100px] h-[100px]" />
+                <Image src={IMAGES.brand6} alt="" className="w-[100px] h-[100px]" />
             </div>
         </div>
     );
 };
+
 export default Hero;

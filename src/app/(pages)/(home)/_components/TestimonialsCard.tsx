@@ -10,7 +10,7 @@ type Props = (typeof TESTIMONIALS)[number] & {
 const TestimonialCard = (props: Props) => {
   const isLarge = props.index === 0 || props.index === 3;
   const width = {
-    card: isLarge ? " w-[700px] max-lg:w-[400px] max-xl:w-[650px] max-md:w-[300px]" : " w-[500px] max-lg:w-[340px] max-xl:w-[350px] max-md:w-[300px]",
+    card: isLarge ? " w-[670px] max-lg:w-[400px] max-xl:w-[650px] max-md:w-[300px]" : " w-[500px] max-lg:w-[340px] max-xl:w-[350px] max-md:w-[300px]",
     quote: isLarge ? "w-[180px] max-lg:w-[120px]" : "w-[150px] max-lg:w-[120px]",
   };
   return (
@@ -35,17 +35,17 @@ const TestimonialCard = (props: Props) => {
         />
       </div>
       <div className={twMerge("w-[68%] max-w-[calc(100%-100px)] xl:max-w-[calc(100%-150px)] max-md:text-[12px]")}>
-        <span className="text-[10px] max-lg:text-[8px] sm:text-[12px] md:text-[16px]  text-[#212529] font-merriweather font-600">
+        <span className="text-[18px] max-md:text-[10px] text-home-heading font-roboto-serif font-500">
           {props.quote.length > 130
             ? `${props.quote.slice(0, 130)}...`
             : props.quote}
         </span>
       </div>
       <div className="flex flex-col mt-auto">
-        <span className="text-[16px] md:text-[20px] font-900 font-source-sans-pro">
+        <span className="text-[16px] font-900 font-roboto  text-home-heading">
           {props.author}
         </span>
-        <span className="text-[10px] md:text-[16px]">{props.position}</span>
+        <span className="text-[13px] font-roboto-serif text-home-body ">{props.position}</span>
       </div>
     </div>
   );

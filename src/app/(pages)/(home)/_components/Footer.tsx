@@ -74,11 +74,11 @@ const Footer = () => {
             />
             <div className="relative z-10 pt-[140px] max-lg:pt-[200px]">
                 <div className="flex flex-col lg:flex-row justify-between mx-6 lg:mx-24 items-start lg:items-center gap-10 lg:gap-0">
-                    <div className="flex flex-col lg:flex-row w-full gap-10 max-lg:gap-2">
+                    <div className="flex flex-col lg:flex-row w-full gap-20 max-lg:gap-2">
                         {FOOTER_LINKS.map((footerLink, i) => (
                             <div key={i} className="flex flex-col gap-2">
                                 <div className="flex justify-between items-center lg:items-start lg:block">
-                                    <span className="text-[18px] font-bold">{footerLink.title}</span>
+                                    <span className="text-[18px] font-bold text-home-heading">{footerLink.title}</span>
                                     <Image
                                         src={IMAGES.plus}
                                         alt='plus'
@@ -91,7 +91,7 @@ const Footer = () => {
                                         } lg:max-h-full`}
                                 >
                                     {footerLink.links.map((link) => (
-                                        <li key={link.label} className="text-[15px] font-serif text-[#151D8C] pt-1">
+                                        <li key={link.label} className="text-[17px] font-roboto-serif text-home-heading  pt-1">
                                             <Link href={link.href}>{link.label}</Link>
                                         </li>
                                     ))}
@@ -102,7 +102,7 @@ const Footer = () => {
                     <div className="flex flex-col gap-4">
                         <div className="w-[270px]">
                             <Image src={ICONS.logo} alt='logo' />
-                            <p>Now Digital Easy have been the #1 provider of best business solutions from Karur, India, since 2015</p>
+                            <p className=' text-home-heading font-roboto-serif text-[17px]'>Now Digital Easy have been the #1 provider of best business solutions from Karur, India, since 2015</p>
                         </div>
                         <div className="flex gap-8 py-2 items-center">
                             <Link href="https://cloud.google.com/find-a-partner/partner/now-digital-easy">
@@ -140,15 +140,15 @@ const Footer = () => {
                 </div>
                 <hr className="bg-white h-[2px] mx-6 lg:mx-24 mt-2" />
                 <div className="px-4 pt-2 flex flex-col md:flex-row justify-between items-center mx-6 lg:mx-24 gap-6 max-md:gap-0 md:gap-0">
-                    <span className="text-[13px] text-center md:text-left text-[#151D8C]">
+                    <span className="text-[13px] text-center md:text-left text-[#151D8C] font-roboto-serif">
                         @2022 Nowdigitaleasy, Inc. All Rights Reserved.
                     </span>
                     <div className="flex max-md:flex-col items-center justify-center p-2 pb-4 gap-4">
                         <div>
-                            <span className="font-source-sans-pro text-[12px] text-[#151D8C]">
+                            <span className=" font-roboto-serif text-[12px] text-[#151D8C]">
                                 <Link href={"/privacy-policy"}>Privacy Policy</Link>
                             </span>
-                            <span className="font-source-sans-pro text-[12px] text-[#151D8C]">
+                            <span className=" font-roboto-serif text-[12px] text-[#151D8C]">
                                 <Link href={"/usage-terms"}>Terms and Conditions</Link>
                             </span>
                         </div>

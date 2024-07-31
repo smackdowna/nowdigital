@@ -73,9 +73,9 @@ const Card: React.FC<CardProps> = ({ title, description, imgSrc }) => (
   <div className='bg-[#FFFBF0] w-[282px] h-[275px] rounded-[10px] pt-4 hover:scale-105 hover:border-[#0011FF] hover:border-[2px] duration-500'>
     <Image src={imgSrc} alt={title} className="m-3" />
     <div className="flex gap-4 m-2">
-      <span className="text-[22px] leading-[28.13px] tracking-tighter font-900 ">{title}</span>
+      <span className="text-[22px] text-home-heading leading-[28.13px] tracking-tight font-900 w-[250px] h-[56px] ">{title}</span>
     </div>
-    <div className="text-[#000334] font-serif tracking-tighter mt-3 text-[17px] m-3 font-400 opacity-50 w-[250px]">
+    <div className="text-[#000334] font-serif tracking-tighter mt-3 text-[17px] m-3 font-400  w-[250px]">
       <span>{description}</span>
     </div>
   </div>
@@ -83,36 +83,38 @@ const Card: React.FC<CardProps> = ({ title, description, imgSrc }) => (
 
 const Organization: React.FC = () => {
   return (
-    <div className='p-10 max-md:p-6 bg-[#ECEDFF]'>
-      <div className='flex justify-center text-[43px] max-md:text-2xl text-center max-lg:text-[34px] leading-[51.6px] tracking-tighter font-900 mt-10'>
-        <span>Grow your organization faster than ever</span>
-      </div>
-      <div className='flex justify-center mt-4'>
-        <div className='bg-border-image-source w-[850px] max-lg:w-[670px] max-md:hidden h-2'></div>
-      </div>
-      <div className='flex justify-center mt-10 max-md:mt-4'>
-        <span className='text-center text-[20px] font-serif font-600 w-[600px]'>
-          Empower and take your business to the next level with our comprehensive approach.
-        </span>
-      </div>
-      <div className="flex justify-center mx-16 max-lg:mx-1">
-        <div className="flex gap-4 mt-8 overflow-x-scroll hide-scrollbar">
-          {["Domain", "Hosting", "Website Builder", "Marketing Studio", "Google Ads", "Vision Now", "Mails Now", "Chat Now", "Nmail", "Spot Now", "Peoples Now"].map((text) => (
-            <div key={text}>
-              <Button text={text} />
-            </div>
+    <div className="bg-[#ECEDFF]">
+      <div className='p-10 max-md:p-6 max-width'>
+        <div className='flex justify-center  mt-10'>
+          <span className="text-[43px] max-md:text-2xl text-center max-lg:text-[34px] leading-[51.6px] text-home-heading  font-900">Grow your organization faster than ever</span>
+        </div>
+        <div className='flex justify-center mt-4'>
+          <div className='bg-border-image-source w-[850px] max-lg:w-[670px] max-md:hidden h-2'></div>
+        </div>
+        <div className='flex justify-center mt-10 max-md:mt-4'>
+          <span className='text-center text-[20px] font-roboto-serif font-500 w-[550px]'>
+            Empower and take your business to the next level with our comprehensive approach.
+          </span>
+        </div>
+        <div className="flex justify-center  max-lg:mx-1">
+          <div className="flex gap-4 mt-8 overflow-x-scroll hide-scrollbar">
+            {["Domain", "Hosting", "Website Builder", "Marketing Studio", "Google Ads", "Vision Now", "Mails Now", "Chat Now", "Nmail", "Spot Now", "Peoples Now"].map((text) => (
+              <div key={text}>
+                <Button text={text} />
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="flex justify-center flex-wrap gap-6 max-lg:gap-10 mt-10">
+          {cardData.map((card, index) => (
+            <Card
+              key={index}
+              title={card.title}
+              description={card.description}
+              imgSrc={card.imgSrc}
+            />
           ))}
         </div>
-      </div>
-      <div className="flex justify-center flex-wrap gap-6 max-lg:gap-10 mt-10">
-        {cardData.map((card, index) => (
-          <Card
-            key={index}
-            title={card.title}
-            description={card.description}
-            imgSrc={card.imgSrc}
-          />
-        ))}
       </div>
     </div>
   );

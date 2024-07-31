@@ -51,14 +51,20 @@ const config: Config = {
       },
       fontFamily: {
         roboto: ["Roboto", "sans-serif"],
+        'roboto-serif': ["Roboto Serif", "serif"],
+        'roboto-slab': ["Roboto Slab", "serif"],
       },
       fontWeight: {
         100: "100",
+        200: "200",
         300: "300",
         400: "400",
         500: "500",
+        600: "600",
         700: "700",
+        750: "750",
         800: "800",
+        
         900: "900",
       },
     },

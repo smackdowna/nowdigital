@@ -32,8 +32,8 @@ export default function Home() {
     <>
       <Navbar navbarBg={navbarBg} />
       <div className="">
-        <div ref={heroRef}>
-          <Hero />
+        <div ref={possibilitiesRef}>
+        <Hero />
         </div>
         <div ref={possibilitiesRef}>
           <Possibilities />
@@ -50,7 +50,6 @@ export default function Home() {
         <div ref={takeStepNowRef}>
           <TakeStepNow />
         </div>
-
       </div>
     </>
   );

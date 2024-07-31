@@ -25,7 +25,7 @@ const Button = ({ text, onClick, isActive }: ButtonProps) => (
 );
 
 const Accelerate = () => {
-    const sliderRef = useRef<Slider | null>(null);
+    const sliderRef = useRef < Slider | null > (null);
     const cards = [ICONS.card, ICONS.card, ICONS.card, ICONS.card, ICONS.card];
     const [activeButton, setActiveButton] = useState("Mails Now");
 
@@ -72,40 +72,43 @@ const Accelerate = () => {
     }, []);
 
     return (
-        <div className="p-16 max-lg:p-4 bg-gradient-acc max-lg:bg-gradient-acc1">
-            <div className="flex justify-center text-[43px] max-lg:text-4xl max-md:text-2xl text-center leading-[51.6px] tracking-tighter font-900 mt-10">
-                <span className="w-[880px]">Accelerate Outcomes and Supercharge Experience with Ready to Go Solutions</span>
-            </div>
-            <div className="flex justify-center mt-4 max-md:hidden">
-                <div className="bg-border-image-source w-[850px] max-lg:w-[700px] h-2"></div>
-            </div>
-            <div className="flex justify-center">
-                <div className="flex justify-center flex-wrap gap-8 max-lg:gap-4 mt-8">
-                    {buttons.map((text, index) => (
-                        <Button
-                            key={text}
-                            text={text}
-                            onClick={() => handleButtonClick(index, text)}
-                            isActive={activeButton === text}
-                        />
-                    ))}
+        <div className="bg-gradient-acc max-lg:bg-gradient-acc1 warpper">
+            <div className="p-32 max-lg:p-4  max-width">
+                <div className="flex justify-center  mt-10">
+                    <span className="w-[880px] text-[43px] max-lg:text-4xl max-md:text-2xl text-center leading-[51.6px] text-home-heading font-900">Accelerate Outcomes and Supercharge Experience with Ready to Go Solutions</span>
+                </div>
+                <div className="flex justify-center mt-4 max-md:hidden">
+                    <div className="bg-border-image-source w-[850px] max-lg:w-[700px] h-2"></div>
+                </div>
+                <div className="flex justify-center">
+                    <div className="flex justify-center flex-wrap gap-8 max-lg:gap-4 mt-8">
+                        {buttons.map((text, index) => (
+                            <Button
+                                key={text}
+                                text={text}
+                                onClick={() => handleButtonClick(index, text)}
+                                isActive={activeButton === text}
+                            />
+                        ))}
+                    </div>
+                </div>
+                <div className="flex justify-center relative">
+                    <Slider {...settings} ref={sliderRef} className="w-full my-10">
+                        {cards.map((card, index) => (
+                            <div key={index} className="px-4 max-md:px-1 max-lg:px-2">
+                                <Image src={card} alt="card" layout="responsive" objectFit="cover" />
+                            </div>
+                        ))}
+                    </Slider>
+                    <button className="absolute bg-[#0011FF] left-[30px] top-1/2 transform -translate-y-1/2" onClick={() => sliderRef.current?.slickPrev()}>
+                        <Image src={ICONS.arrowleft} alt="left" />
+                    </button>
+                    <button className="absolute bg-[#0011FF] right-[30px] top-1/2 transform -translate-y-1/2" onClick={() => sliderRef.current?.slickNext()}>
+                        <Image src={ICONS.arrowleft} alt="right" className="rotate-180" />
+                    </button>
                 </div>
             </div>
-            <div className="flex justify-center relative">
-                <Slider {...settings} ref={sliderRef} className="w-full my-10">
-                    {cards.map((card, index) => (
-                        <div key={index} className="px-4 max-md:px-1 max-lg:px-2">
-                            <Image src={card} alt="card" layout="responsive" objectFit="cover" />
-                        </div>
-                    ))}
-                </Slider>
-                <button className="absolute bg-[#0011FF] left-[30px] top-1/2 transform -translate-y-1/2" onClick={() => sliderRef.current?.slickPrev()}>
-                    <Image src={ICONS.arrowleft} alt="left" />
-                </button>
-                <button className="absolute bg-[#0011FF] right-[30px] top-1/2 transform -translate-y-1/2" onClick={() => sliderRef.current?.slickNext()}>
-                    <Image src={ICONS.arrowleft} alt="right" className="rotate-180" />
-                </button>
-            </div>
+
         </div>
     );
 };

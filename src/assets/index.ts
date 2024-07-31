@@ -48,6 +48,10 @@ import dot from "@/assets/images/Ellipse 262.svg"
 import path from "@/assets/images/path18.svg"
 import usa from "@/assets/images/usa.jpg"
 import singapore from "@/assets/images/Flag_of_Singapore.svg.webp"
+import banner from "@/assets/images/section 5 bg.png"
+import home from "@/assets/images/Home Banner.png"
+
+
 
 
 
@@ -98,7 +102,9 @@ import singapore from "@/assets/images/Flag_of_Singapore.svg.webp"
     dot,
     path,
     usa,
-    singapore
+    singapore,
+    banner,
+    home
   }
   
   export { IMAGES, ICONS };
