@@ -4,9 +4,11 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 import Link from 'next/link';
 
-// Define currency and corresponding flag images
-const CURRENCY_FLAGS = {
+
+const CURRENCY_FLAGS: { [key: string]: any } = {
     INR: ICONS.india, // Use your flag image path here
+    USD: IMAGES.usa, // Assuming you have this path
+    SGD: IMAGES.singapore, // Assuming you have this path
 };
 
 const FOOTER_LINKS = [
@@ -53,7 +55,7 @@ const FOOTER_LINKS = [
 
 const Footer = () => {
     const [expandedSection, setExpandedSection] = useState<number | null>(null);
-    const [currency, setCurrency] = useState('₹INR');
+    const [currency, setCurrency] = useState('INR');
 
     const toggleSection = (index: number) => {
         setExpandedSection(prev => (prev === index ? null : index));
@@ -74,7 +76,7 @@ const Footer = () => {
                 <div className="flex flex-col lg:flex-row justify-between mx-6 lg:mx-24 items-start lg:items-center gap-10 lg:gap-0">
                     <div className="flex flex-col lg:flex-row w-full gap-10 max-lg:gap-2">
                         {FOOTER_LINKS.map((footerLink, i) => (
-                            <div key={i} className="flex flex-col gap-4">
+                            <div key={i} className="flex flex-col gap-2">
                                 <div className="flex justify-between items-center lg:items-start lg:block">
                                     <span className="text-[18px] font-bold">{footerLink.title}</span>
                                     <Image
@@ -89,7 +91,7 @@ const Footer = () => {
                                         } lg:max-h-full`}
                                 >
                                     {footerLink.links.map((link) => (
-                                        <li key={link.label} className="text-[17px] font-serif text-[#151D8C] pt-1">
+                                        <li key={link.label} className="text-[15px] font-serif text-[#151D8C] pt-1">
                                             <Link href={link.href}>{link.label}</Link>
                                         </li>
                                     ))}
@@ -118,10 +120,10 @@ const Footer = () => {
                 <div className='mx-6 lg:mx-24 mt-16 max-md:mt-6 flex gap-4 items-center'>
                     {/* Flag image and currency dropdown */}
                     <div className='flex items-center gap-2'>
-                        <Image src={ICONS.india} alt={currency} width={20} height={15} />
+                        <Image src={CURRENCY_FLAGS[currency as keyof typeof CURRENCY_FLAGS]} alt={currency} width={30} height={15} />
                         <div className='flex gap-2'>
-                            <span>- English</span>
-                            <Image src={ICONS.drop} alt='' className='rotate-180 w-2' />
+                            <span>English</span>
+                            <Image src={ICONS.drop} alt='' className=' w-2.5' />
                         </div>
                     </div>
                     <div className='relative flex gap-2 items-center'>
@@ -130,8 +132,8 @@ const Footer = () => {
                             onChange={handleCurrencyChange}
                             className="rounded p-1 bg-transparent  outline-none"
                         >
-                            <option value="₹INR">₹INR</option>
-                            <option value="$USD">$USD</option>
+                            <option value="INR">₹INR</option>
+                            <option value="USD">$USD</option>
                             <option value="SGD">$SGD</option>
                         </select>
                     </div>

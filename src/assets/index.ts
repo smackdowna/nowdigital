@@ -46,6 +46,10 @@ import author2 from "@/assets/icons/Group 69413.svg"
 import menu from "@/assets/icons/menu.svg"
 import dot from "@/assets/images/Ellipse 262.svg"
 import path from "@/assets/images/path18.svg"
+import usa from "@/assets/images/usa.jpg"
+import singapore from "@/assets/images/Flag_of_Singapore.svg.webp"
+
+
 
 
 
@@ -92,7 +96,9 @@ import path from "@/assets/images/path18.svg"
     author1,
     plus,
     dot,
-    path
+    path,
+    usa,
+    singapore
   }
   
   export { IMAGES, ICONS };
