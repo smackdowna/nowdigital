@@ -3,14 +3,15 @@ import { IMAGES } from "@/assets";
 
 const TakeStepNow = () => {
     return (
-        <div className='relative bg-background-take flex flex-col gap-4 pb-20'>
-            <div className="absolute inset-0 z-0  opacity-55 ">
+        <div className='relative bg-background-take flex flex-col gap-4 pb-20 '>
+            <div className="absolute inset-0 z-0 opacity-80  ">
                 <Image 
                     src={IMAGES.banner} 
                     alt="banner" 
                     layout="fill" 
                     objectFit="cover" 
                     quality={100}
+                    className=""
                 />
             </div>
             <div className="relative z-10 text-[43px] max-lg:text-3xl max-md:text-2xl font-900 text-center mt-40 max-lg:mt-20  text-home-body">

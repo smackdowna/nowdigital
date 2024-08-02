@@ -10,7 +10,7 @@ type Props = (typeof TESTIMONIALS)[number] & {
 const TestimonialCard = (props: Props) => {
   const isLarge = props.index === 0 || props.index === 3;
   const width = {
-    card: isLarge ? " w-[670px] max-lg:w-[400px] max-xl:w-[650px] max-md:w-[300px]" : " w-[500px] max-lg:w-[340px] max-xl:w-[350px] max-md:w-[300px]",
+    card: isLarge ? " w-[640px] max-lg:w-[400px] max-xl:w-[650px] max-md:w-[300px] max-2xl:w-[750px]" : " w-[640px] max-2xl:w-[500px] max-lg:w-[340px] max-xl:w-[350px] max-md:w-[300px]",
     quote: isLarge ? "w-[180px] max-lg:w-[120px]" : "w-[150px] max-lg:w-[120px]",
   };
   return (

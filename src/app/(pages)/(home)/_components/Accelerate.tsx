@@ -25,9 +25,10 @@ const Button = ({ text, onClick, isActive }: ButtonProps) => (
 );
 
 const Accelerate = () => {
-    const sliderRef = useRef < Slider | null > (null);
+    const sliderRef = useRef<Slider | null>(null);
     const cards = [ICONS.card, ICONS.card, ICONS.card, ICONS.card, ICONS.card];
     const [activeButton, setActiveButton] = useState("Mails Now");
+    const [currentSlide, setCurrentSlide] = useState(0);
 
     const buttons = ["Mails Now", "Chat Now", "Nmail", "Spot Now", "Peoples Now"];
 
@@ -42,7 +43,10 @@ const Accelerate = () => {
         centerPadding: "100px",
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />,
-        afterChange: (index: number) => setActiveButton(buttons[index]),
+        afterChange: (index: number) => {
+            setActiveButton(buttons[index]);
+            setCurrentSlide(index);
+        },
         responsive: [
             {
                 breakpoint: 1024,
@@ -72,13 +76,15 @@ const Accelerate = () => {
     }, []);
 
     return (
-        <div className="bg-gradient-acc max-lg:bg-gradient-acc1 warpper">
-            <div className="p-10 max-lg:p-4  max-width">
-                <div className="flex justify-center  mt-10">
-                    <span className="w-[880px] text-[43px] max-lg:text-4xl max-md:text-2xl text-center leading-[51.6px] text-home-heading font-900">Accelerate Outcomes and Supercharge Experience with Ready to Go Solutions</span>
+        <div className="bg-gradient-acc max-lg:bg-gradient-acc1">
+            <div className="py-10 max-lg:p-4">
+                <div className="flex justify-center mt-10">
+                    <span className="w-[70%] text-[55px] max-xl:text-4xl max-lg:text-2xl max-md:text-xl max-2xl:text-5xl max-sm:w-[90%] text-center leading-[72.6px] text-home-heading font-900 max-sm:text-lg">
+                        Accelerate Outcomes and Supercharge Experience with Ready to Go Solutions
+                    </span>
                 </div>
                 <div className="flex justify-center mt-4 max-md:hidden">
-                    <div className="bg-border-image-source w-[850px] max-lg:w-[700px] h-2"></div>
+                    <div className="bg-border-image-source w-[65%] h-2"></div>
                 </div>
                 <div className="flex justify-center">
                     <div className="flex justify-center flex-wrap gap-8 max-lg:gap-4 mt-8">
@@ -95,7 +101,10 @@ const Accelerate = () => {
                 <div className="flex justify-center relative">
                     <Slider {...settings} ref={sliderRef} className="w-full my-10">
                         {cards.map((card, index) => (
-                            <div key={index} className="px-4 max-md:px-1 max-lg:px-2">
+                            <div
+                                key={index}
+                                className={`px-4 transition-opacity duration-500 ${currentSlide === index ? "opacity-100" : "opacity-30"}`}
+                            >
                                 <Image src={card} alt="card" layout="responsive" objectFit="cover" />
                             </div>
                         ))}
@@ -108,7 +117,6 @@ const Accelerate = () => {
                     </button>
                 </div>
             </div>
-
         </div>
     );
 };

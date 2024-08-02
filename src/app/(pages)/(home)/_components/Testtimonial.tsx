@@ -13,7 +13,7 @@ const Testimonials: React.FC = () => {
     };
     return (
         <div className=" bg-[#FFFBF0]">
-            <div className=" gap-10 pb-36 max-md:pb-10 max-width">
+            <div className=" gap-10 pb-36 max-md:pb-10 mx-24 max-2xl:mx-2">
                 <div className="pt-28 max-md:pt-10 flex justify-center">
                     <span className="text-dark-200 text-lg md:text-[28px] text-center xl:text-2xl font-900  text-home-body opacity-70">
                         People just love working with us!

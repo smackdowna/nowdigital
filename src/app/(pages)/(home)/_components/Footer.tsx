@@ -73,7 +73,7 @@ const Footer = () => {
                 alt="footer"
             />
             <div className="relative z-10 pt-[140px] max-lg:pt-[200px]">
-                <div className="flex flex-col lg:flex-row justify-between mx-6 lg:mx-24 items-start lg:items-center gap-10 lg:gap-0">
+                <div className="flex flex-col lg:flex-row justify-between mx-6 lg:mx-32 items-start lg:items-center gap-10 lg:gap-0">
                     <div className="flex flex-col lg:flex-row w-full gap-20 max-lg:gap-2">
                         {FOOTER_LINKS.map((footerLink, i) => (
                             <div key={i} className="flex flex-col gap-2">
@@ -117,7 +117,7 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-                <div className='mx-6 lg:mx-24 mt-16 max-md:mt-6 flex gap-4 items-center'>
+                <div className='mx-6 lg:mx-32 mt-16 max-md:mt-6 flex gap-4 items-center'>
                     {/* Flag image and currency dropdown */}
                     <div className='flex items-center gap-2'>
                         <Image src={CURRENCY_FLAGS[currency as keyof typeof CURRENCY_FLAGS]} alt={currency} width={30} height={15} />
@@ -138,8 +138,8 @@ const Footer = () => {
                         </select>
                     </div>
                 </div>
-                <hr className="bg-white h-[2px] mx-6 lg:mx-24 mt-2" />
-                <div className="px-4 pt-2 flex flex-col md:flex-row justify-between items-center mx-6 lg:mx-24 gap-6 max-md:gap-0 md:gap-0">
+                <hr className="bg-white h-[2px] mx-6 lg:mx-32 mt-2" />
+                <div className="px-4 pt-2 flex flex-col md:flex-row justify-between items-center mx-6 lg:mx-32 gap-6 max-md:gap-0 md:gap-0">
                     <span className="text-[13px] text-center md:text-left text-[#151D8C] font-roboto-serif">
                         @2022 Nowdigitaleasy, Inc. All Rights Reserved.
                     </span>
