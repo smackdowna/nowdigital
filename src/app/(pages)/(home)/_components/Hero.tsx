@@ -22,7 +22,7 @@ const Hero = () => {
               Hey Business Owners
               <br /> <span className="text-[#0011FF]">Go Digital</span> Effortlessly
             </h1>
-            <p className="text-[22px] max-2xl:text-[22px] max-xl:text-lg font-roboto-serif tracking-wide text-text-900/80 w-[730px] max-2xl:w-[650px] max-xl:w-[550px] max-lg:w-[400px] max-md:w-[320px] max-sm:w-[300px]">
+            <p className="text-[22px] max-2xl:text-[22px] max-xl:text-lg font-roboto-serif  text-text-900/80 w-[720px] max-2xl:w-[650px] max-xl:w-[550px] max-lg:w-[400px] max-md:w-[320px] max-sm:w-[300px]">
               Stop being static! Scale your business by going digital, the easy
               way, with NDE. We’re technology-enabled and structured for speed and
               efficiency to meet the ever-changing needs of today’s business.
@@ -38,7 +38,7 @@ const Hero = () => {
           <div className="aspect-[1.6/1] bg-[#FEF3E3] rounded-[34px] border-8 md:border-[10px] w-[40vw] max-lg:w-full border-black"></div>
         </div>
       </div>
-      <span className="flex text-center text-sm md:text-base lg:text-lg xl:text-xl font-600 pt-[80px] md:pt-[100px] lg:pt-[120px] pb-[20px] md:pb-[30px] lg:pb-[40px] leading-[20.4px] text-home-body justify-center font-roboto-serif">
+      <span className="flex text-center text-2xl max-2xl:text-xl max-lg:text-lg font-600 pt-[80px] md:pt-[100px] lg:pt-[120px] pb-[20px] md:pb-[30px] lg:pb-[40px] leading-[20.4px] text-home-body justify-center font-roboto-serif">
         12,000+ global businesses trust us to transform & grow digitally
       </span>
       <div className="flex justify-center items-center gap-4 md:gap-8 lg:gap-16 pb-6 overflow-hidden ">

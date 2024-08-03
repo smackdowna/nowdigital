@@ -13,6 +13,8 @@ import brand from "@/assets/icons/Brand.svg"
 import card from "@/assets/icons/Rectangle 46504.svg"
 import arrowleft from "@/assets/icons/chevrons-right.svg"
 import gol from "@/assets/icons/gol.svg"
+import footerlogo from "@/assets/icons/Group 69758.svg"
+
 
 
 
@@ -74,7 +76,9 @@ import home from "@/assets/images/Home Banner.png"
     arrowleft,
     author2,
     menu,
-    gol
+    gol,
+    footerlogo
+    
   };
 
   const IMAGES = {

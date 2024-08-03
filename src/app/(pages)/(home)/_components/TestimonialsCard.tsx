@@ -10,13 +10,13 @@ type Props = (typeof TESTIMONIALS)[number] & {
 const TestimonialCard = (props: Props) => {
   const isLarge = props.index === 0 || props.index === 3;
   const width = {
-    card: isLarge ? " w-[640px] max-lg:w-[400px] max-xl:w-[650px] max-md:w-[300px] max-2xl:w-[750px]" : " w-[640px] max-2xl:w-[500px] max-lg:w-[340px] max-xl:w-[350px] max-md:w-[300px]",
+    card: isLarge ? " w-[54%] max-lg:w-[400px] max-xl:w-[630px] max-md:w-full max-2xl:w-[750px] " : " w-[40%] max-2xl:w-[500px] max-lg:w-[320px] max-xl:w-[350px] max-md:w-full",
     quote: isLarge ? "w-[180px] max-lg:w-[120px]" : "w-[150px] max-lg:w-[120px]",
   };
   return (
     <div
       className={twMerge(
-        "relative w-full flex flex-col group max-lg:mx-0 h-[156px] max-md:p-3 max-md:mx-0  sm:h-[180px] md:h-[250px] hover:bg-[#C9CDFF]  xl:px-12 md:p-8 overflow-hidden bg-[#ECEDFF]",
+        "relative w-full flex flex-col group max-lg:mx-0  max-md:p-3 max-md:mx-0   hover:bg-[#C9CDFF]  xl:px-12 md:p-8 overflow-hidden bg-[#ECEDFF]",
         width.card
       )}
     >
@@ -31,21 +31,21 @@ const TestimonialCard = (props: Props) => {
           width={30}
           height={30}
           alt="Quote symbol"
-          className=" max-md:w-[15px]"
+          className=" max-md:w-[18px]"
         />
       </div>
       <div className={twMerge("w-[68%] max-w-[calc(100%-100px)] xl:max-w-[calc(100%-150px)] max-md:text-[12px]")}>
-        <span className="text-[18px] max-md:text-[10px] text-home-heading font-roboto-serif font-500">
+        <span className="text-[20px] max-2xl:text-[15px] max-md:text-[10px] text-home-heading font-roboto-serif font-500">
           {props.quote.length > 130
             ? `${props.quote.slice(0, 130)}...`
             : props.quote}
         </span>
       </div>
       <div className="flex flex-col mt-auto">
-        <span className="text-[16px] font-900 font-roboto  text-home-heading">
+        <span className="text-[22px] max-2xl:text-[18px] max-xl:text-[14px] font-900 font-roboto  text-home-heading">
           {props.author}
         </span>
-        <span className="text-[13px] font-roboto-serif text-home-body ">{props.position}</span>
+        <span className="text-[15px] max-2xl:text-[12px] max-xl:text-[10px] max-sm:text-[8px] font-roboto-serif text-home-body ">{props.position}</span>
       </div>
     </div>
   );

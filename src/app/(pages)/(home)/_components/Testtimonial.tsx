@@ -24,12 +24,12 @@ const Testimonials: React.FC = () => {
                         Digitalized Business Happy Customers That’s Impact
                     </span>
                 </div>
-                <div className="flex flex-wrap justify-center gap-2 max-w-full max-md:hidden">
+                <div className="flex flex-wrap justify-center gap-4 max-w-full max-md:hidden">
                     {TESTIMONIALS.map((testimonial, index) => (
                         <TestimonialCard key={index} {...testimonial} index={index} />
                     ))}
                 </div>
-                <div className="flex justify-center mx-4">
+                <div className="flex justify-center ">
                     <div className="relative md:hidden mx-8 overflow-hidden">
                         <div
                             className="flex transition-transform duration-500"

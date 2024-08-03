@@ -73,12 +73,12 @@ const Footer = () => {
                 alt="footer"
             />
             <div className="relative z-10 pt-[140px] max-lg:pt-[200px]">
-                <div className="flex flex-col lg:flex-row justify-between mx-6 lg:mx-32 items-start lg:items-center gap-10 lg:gap-0">
+                <div className="flex flex-col lg:flex-row justify-between mx-32 max-2xl:mx-6 items-start lg:items-center gap-10 lg:gap-0">
                     <div className="flex flex-col lg:flex-row w-full gap-20 max-lg:gap-2">
                         {FOOTER_LINKS.map((footerLink, i) => (
                             <div key={i} className="flex flex-col gap-2">
                                 <div className="flex justify-between items-center lg:items-start lg:block">
-                                    <span className="text-[18px] font-bold text-home-heading">{footerLink.title}</span>
+                                    <span className="text-[24px] max-2xl:text-[18px] font-bold text-home-heading">{footerLink.title}</span>
                                     <Image
                                         src={IMAGES.plus}
                                         alt='plus'
@@ -91,7 +91,7 @@ const Footer = () => {
                                         } lg:max-h-full`}
                                 >
                                     {footerLink.links.map((link) => (
-                                        <li key={link.label} className="text-[17px] font-roboto-serif text-home-heading  pt-1">
+                                        <li key={link.label} className="text-[20px] max-2xl:text-[18px] max-xl:text-[15px] font-roboto-serif text-home-heading  pt-1">
                                             <Link href={link.href}>{link.label}</Link>
                                         </li>
                                     ))}
@@ -101,7 +101,7 @@ const Footer = () => {
                     </div>
                     <div className="flex flex-col gap-4">
                         <div className="w-[270px]">
-                            <Image src={ICONS.logo} alt='logo' />
+                            <Image src={ICONS.footerlogo} alt='logo' />
                             <p className=' text-home-heading font-roboto-serif text-[17px]'>Now Digital Easy have been the #1 provider of best business solutions from Karur, India, since 2015</p>
                         </div>
                         <div className="flex gap-8 py-2 items-center">
@@ -117,7 +117,7 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-                <div className='mx-6 lg:mx-32 mt-16 max-md:mt-6 flex gap-4 items-center'>
+                <div className=' mx-32 max-2xl:mx-16 mt-16 flex gap-4 items-center'>
                     {/* Flag image and currency dropdown */}
                     <div className='flex items-center gap-2'>
                         <Image src={CURRENCY_FLAGS[currency as keyof typeof CURRENCY_FLAGS]} alt={currency} width={30} height={15} />
