@@ -38,6 +38,7 @@ const config: Config = {
         },
       },
       backgroundImage: {
+        "gradient-domain-hero":"linear-gradient(0deg, #F1F7FF 0%, #B2D1FE 100%)",
         "gradient-acc1": "linear-gradient(90.37deg, #D2D5FD 0.32%, #D8DAF8 22.3%, #EFE8E7 49.57%, #FEF6E2 99.68%)",
         "gradient-acc": "linear-gradient(180deg, #FCF2E3 0%, #D3D6FD 100%)",
         "gradient-footer": "linear-gradient(0deg, #C9CCFF 0%, #A2A9FF 51.5%, #A2A9FF 100%)",

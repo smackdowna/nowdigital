@@ -12,7 +12,6 @@ import Testimonials from './_components/Testtimonial';
 
 export default function Home() {
   const [navbarBg, setNavbarBg] = useState('bg-transparent');
-
   const { ref: heroRef, inView: heroInView } = useInView();
   const { ref: possibilitiesRef, inView: possibilitiesInView } = useInView();
   const { ref: accelerateRef, inView: accelerateInView } = useInView();

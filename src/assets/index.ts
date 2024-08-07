@@ -14,8 +14,15 @@ import card from "@/assets/icons/Rectangle 46504.svg"
 import arrowleft from "@/assets/icons/chevrons-right.svg"
 import gol from "@/assets/icons/gol.svg"
 import footerlogo from "@/assets/icons/Group 69758.svg"
-
-
+import DNS from "@/assets/icons/Group 70390.svg"
+import HTTPS from "@/assets/icons/Group 70389.svg"
+import Gear from "@/assets/icons/Group 70391.svg"
+import Power from "@/assets/icons/Group 69845.svg"
+import arrowCricle from "@/assets/icons/arrow-right-circle.svg"
+import plusCricle from "@/assets/icons/plus-circle.svg"
+import getofferarrow from "@/assets/icons/arrow-right.svg"
+import close from "@/assets/icons/Group 70428.svg"
+import Mweb from "@/assets/icons/Group 69810.svg"
 
 
 
@@ -55,7 +62,13 @@ import usa from "@/assets/images/usa.jpg"
 import singapore from "@/assets/images/Flag_of_Singapore.svg.webp"
 import banner from "@/assets/images/section 5 bg.png"
 import home from "@/assets/images/Home Banner.png"
-
+import domain from "@/assets/images/image 2827.svg"
+import domain2 from "@/assets/images/image 2828.svg"
+import domainCloud from "@/assets/images/domainCloud.svg"
+import rightdomain from "@/assets/images/Group 69817.svg"
+import swutchdomain from "@/assets/images/switch.svg"
+import cricleCheck from "@/assets/images/check-circle.svg"
+import domainBanner from "@/assets/images/banner.png"
 
 
 
@@ -77,7 +90,16 @@ import home from "@/assets/images/Home Banner.png"
     author2,
     menu,
     gol,
-    footerlogo
+    footerlogo,
+    DNS,
+    HTTPS,
+    Gear,
+    Power,
+    arrowCricle,
+    plusCricle,
+    getofferarrow,
+    close,
+    Mweb
     
   };
 
@@ -106,7 +128,14 @@ import home from "@/assets/images/Home Banner.png"
     usa,
     singapore,
     banner,
-    home
+    home,
+    domain,
+    domain2,
+    domainCloud,
+    rightdomain,
+    swutchdomain,
+    cricleCheck,
+    domainBanner
   }
   
   export { IMAGES, ICONS };
