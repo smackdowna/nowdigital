@@ -17,13 +17,17 @@ const DomainCard: React.FC<DomainCardProps> = ({ image, title, price, originalPr
   <div
     onMouseEnter={() => setHoveredCard(index)}
     onMouseLeave={() => setHoveredCard(null)}
-    className={`relative hover:scale-105 w-[22vw] max-lg:w-[300px] group shadow-[0px_2px_2px_0px_#00000040] h-[200px]  rounded-[10px] p-[2px] transition-all duration-300 ${hoveredCard === index ? 'bg-gradient-to-r from-blue-500 to-yellow-500' : 'bg-transparent'}`}
+    className={`relative hover:scale-105 w-[22vw] max-lg:w-[300px] group shadow-[0px_2px_2px_0px_#00000040] h-[200px] rounded-[10px] p-[2px] transition-all duration-300 ${hoveredCard === index ? 'bg-gradient-to-r from-blue-500 to-yellow-500' : 'bg-transparent'}`}
     style={{ background: hoveredCard === index ? 'linear-gradient(0deg, rgba(233,45,253,1) 0%, rgba(136,114,226,1) 55%)' : 'transparent' }}
   >
     <div className='relative bg-white py-5 px-4 rounded-[10px] h-[197px] flex flex-col gap-4'>
-      <Image src={image} alt='domain' className='absolute bottom-0 right-0 w-[50%] h-auto' />
+      <Image
+        src={image}
+        alt='domain'
+        className={`absolute bottom-0 right-0 w-[50%] h-auto transition-opacity duration-300 ${hoveredCard === index ? 'opacity-100' : 'opacity-70'}`}
+      />
       <div className='relative z-10 flex flex-col gap-4'>
-        <span className='font-900 text-5xl max-2xl:text-4xl  max-lg:text-3xl text-home-heading'>
+        <span className='font-900 text-5xl max-2xl:text-4xl max-lg:text-3xl text-home-heading'>
           <span style={{ color: '#72e1e2' }}>•</span> {title}
         </span>
         <div className='flex flex-col'>

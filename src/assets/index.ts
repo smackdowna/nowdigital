@@ -27,6 +27,8 @@ import Mweb1 from "@/assets/icons/Group 69812.svg"
 import Mweb2 from "@/assets/icons/Group 69811.svg"
 import Mweb3 from "@/assets/icons/Group 69816.svg"
 import Mweb4 from "@/assets/icons/Group 69813.svg"
+import hover from "@/assets/icons/domain section 2 card bg.png"
+
 
 
 
@@ -112,7 +114,8 @@ import domainBanner from "@/assets/images/banner.png"
     Mweb1,
     Mweb2,
     Mweb3,
-    Mweb4
+    Mweb4,
+    hover
     
   };
 
