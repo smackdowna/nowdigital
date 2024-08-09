@@ -23,6 +23,14 @@ import plusCricle from "@/assets/icons/plus-circle.svg"
 import getofferarrow from "@/assets/icons/arrow-right.svg"
 import close from "@/assets/icons/Group 70428.svg"
 import Mweb from "@/assets/icons/Group 69810.svg"
+import Mweb1 from "@/assets/icons/Group 69812.svg"
+import Mweb2 from "@/assets/icons/Group 69811.svg"
+import Mweb3 from "@/assets/icons/Group 69816.svg"
+import Mweb4 from "@/assets/icons/Group 69813.svg"
+
+
+
+
 
 
 
@@ -72,6 +80,7 @@ import domainBanner from "@/assets/images/banner.png"
 
 
 
+
   const ICONS = {
     logo,
     chart,
@@ -99,7 +108,11 @@ import domainBanner from "@/assets/images/banner.png"
     plusCricle,
     getofferarrow,
     close,
-    Mweb
+    Mweb,
+    Mweb1,
+    Mweb2,
+    Mweb3,
+    Mweb4
     
   };
 
