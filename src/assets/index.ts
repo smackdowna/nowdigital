@@ -28,6 +28,13 @@ import Mweb2 from "@/assets/icons/Group 69811.svg"
 import Mweb3 from "@/assets/icons/Group 69816.svg"
 import Mweb4 from "@/assets/icons/Group 69813.svg"
 import hover from "@/assets/icons/domain section 2 card bg.png"
+import cartmodel from "@/assets/icons/Group 68963.svg"
+import serach from "@/assets/icons/search.svg"
+import icon from "@/assets/icons/Group 69896.svg"
+import icon1 from "@/assets/icons/Group 69905.svg"
+
+
+
 
 
 
@@ -79,6 +86,13 @@ import rightdomain from "@/assets/images/Group 69817.svg"
 import swutchdomain from "@/assets/images/switch.svg"
 import cricleCheck from "@/assets/images/check-circle.svg"
 import domainBanner from "@/assets/images/banner.png"
+import HostBanner from "@/assets/images/image 2831.svg"
+import HostHero from "@/assets/images/Group 70488.svg"
+import person from "@/assets/images/image 2838.svg"
+
+
+
+
 
 
 
@@ -115,7 +129,11 @@ import domainBanner from "@/assets/images/banner.png"
     Mweb2,
     Mweb3,
     Mweb4,
-    hover
+    hover,
+    cartmodel,
+    serach,
+    icon,
+    icon1
     
   };
 
@@ -151,7 +169,11 @@ import domainBanner from "@/assets/images/banner.png"
     rightdomain,
     swutchdomain,
     cricleCheck,
-    domainBanner
+    domainBanner,
+    HostBanner,
+    HostHero,
+    person
+    
   }
   
   export { IMAGES, ICONS };

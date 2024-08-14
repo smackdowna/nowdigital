@@ -38,6 +38,9 @@ const config: Config = {
         },
       },
       backgroundImage: {
+        "background-reason": "linear-gradient(180deg, #01A9A9  0%, #0164F9  100%)",
+        "background-button": "linear-gradient(265.93deg, #00A7A7 0%, #0066FF 100%)",
+        "gradient-hosting-hero":"linear-gradient(291.46deg, #C5FFFF 35.97%, #B8D4FF 64.77%)",
         "gradient-domain-hero":"linear-gradient(0deg, #F1F7FF 0%, #B2D1FE 100%)",
         "gradient-acc1": "linear-gradient(90.37deg, #D2D5FD 0.32%, #D8DAF8 22.3%, #EFE8E7 49.57%, #FEF6E2 99.68%)",
         "gradient-acc": "linear-gradient(180deg, #FCF2E3 0%, #D3D6FD 100%)",

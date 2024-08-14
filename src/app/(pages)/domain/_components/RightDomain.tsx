@@ -28,8 +28,8 @@ const RightDomain: React.FC = () => {
       <div className='flex flex-col-reverse lg:flex-row justify-center gap-32 max-2xl:gap-20 max-xl:gap-10 items-center px-5 max-md:px-0  lg:px-0 mx-2 lg:mx-32'>
         <div className='w-full lg:w-[50%] py-5 lg:py-32 flex flex-col gap-8  px-1 max-md:gap-4'>
           <InfoSection title="Use Relevant Keywords" description={description} />
-          <InfoSection title="Use Relevant Keywords" description={description} />
-          <InfoSection title="Use Relevant Keywords" description={description} />
+          <InfoSection title="Explore alternatives" description={description} />
+          <InfoSection title="Keep it short" description={description} />
         </div>
         <div className='flex gap-8'>
           <div className='relative w-[350px] max-2xl:w-[280px] max-xl:w-[240px] max-xl:h-[580px] max-md:w-[130px] max-md:h-[400px] h-[700px] overflow-hidden '>
@@ -86,9 +86,9 @@ const RightDomain: React.FC = () => {
           </div>
         </div>
         <div className='w-full lg:w-[50%] py-5 lg:py-32 flex flex-col gap-8  px-1 max-md:gap-4'>
-          <InfoSection title="Use Relevant Keywords" description={description} />
-          <InfoSection title="Use Relevant Keywords" description={description} />
-          <InfoSection title="Use Relevant Keywords" description={description} />
+        <InfoSection title="Use Relevant Keywords" description={description} />
+          <InfoSection title="Explore alternatives" description={description} />
+          <InfoSection title="Keep it short" description={description} />
         </div>
        
       </div>
