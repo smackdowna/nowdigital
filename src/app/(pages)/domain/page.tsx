@@ -52,7 +52,7 @@ const Page = () => {
         <Power />
       </div>
       <div ref={faqsRef}>
-        <FAQs />
+        <FAQs bgColor='bg-gradient-domain-hero'/>
       </div>
     </>
   );

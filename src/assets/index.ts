@@ -32,6 +32,42 @@ import cartmodel from "@/assets/icons/Group 68963.svg"
 import serach from "@/assets/icons/search.svg"
 import icon from "@/assets/icons/Group 69896.svg"
 import icon1 from "@/assets/icons/Group 69905.svg"
+import Gsuite from "@/assets/icons/Group 69151.svg"
+import GsuiteIcon from "@/assets/icons/image 2839.svg"
+import Gmail from "@/assets/icons/image 80.svg"
+import video from "@/assets/icons/image 81.svg"
+import calendar from "@/assets/icons/image 82.svg"
+import teams from "@/assets/icons/image 83.svg"
+import Docs from "@/assets/icons/image 84.svg"
+import Sheets from "@/assets/icons/image 85.svg"
+import Keeps from "@/assets/icons/image 86.svg"
+import Projects from "@/assets/icons/image 87.svg"
+import Forms from "@/assets/icons/image 88.svg"
+import Buld from "@/assets/icons/image 89.svg"
+import Buld1 from "@/assets/icons/image 90.svg"
+import Admin from "@/assets/icons/image 91.svg"
+import Google1 from "@/assets/icons/image 94.svg"
+import Google2 from "@/assets/icons/image 93.svg"
+import Google3 from "@/assets/icons/image 92.svg"
+import Check from "@/assets/icons/check 1.svg"
+import Close from "@/assets/icons/ic_round-close.svg"
+import GsuiteHero from "@/assets/icons/Group 69102.svg"
+import blur from "@/assets/icons/image 2841.svg"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -97,6 +133,9 @@ import person from "@/assets/images/image 2838.svg"
 
 
 
+
+
+
   const ICONS = {
     logo,
     chart,
@@ -133,7 +172,28 @@ import person from "@/assets/images/image 2838.svg"
     cartmodel,
     serach,
     icon,
-    icon1
+    icon1,
+    Gsuite,
+    GsuiteIcon,
+    Gmail,
+    video,
+    calendar,
+    teams,
+    Docs,
+    Sheets,
+    Keeps,
+    Projects,
+    Forms,
+    Buld,
+    Buld1,
+    Admin,
+    Google1,
+    Google2,
+    Google3,
+    Check,
+    Close,
+    GsuiteHero,
+    blur
     
   };
 

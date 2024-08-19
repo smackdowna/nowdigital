@@ -15,7 +15,7 @@ const DomainCard: React.FC<DomainCardProps> = ({ image, title, index, hoveredCar
     <div
         onMouseEnter={() => setHoveredCard(index)}
         onMouseLeave={() => setHoveredCard(null)}
-        className={`relative hover:scale-105 w-[21vw] max-lg:w-[300px] group shadow-md rounded-[10px] h-[400px] transition-all duration-1000 p-[1px] ${
+        className={`relative hover:scale-105 w-[21vw]  max-xl:w-[300px] max-md:w-[280px] group shadow-md rounded-[10px] h-[400px] transition-all duration-1000 p-[1px] ${
             hoveredCard === index ? 'bg-gradient-to-r from-sky-500 to-cyan-300' : 'bg-transparent'
         }`}
         style={{ background: hoveredCard === index ? 'linear-gradient(265.93deg, #00A7A7 0%, #0066FF 100%)' : 'transparent' }}
@@ -32,8 +32,8 @@ const DomainCard: React.FC<DomainCardProps> = ({ image, title, index, hoveredCar
                 <div className="bg-cyan-300 bg-opacity-20 w-[80px] h-[80px] flex justify-center items-center">
                     <Image src={ICONS.icon} alt="lock icon" className="w-[30px]" />
                 </div>
-                <span className=" font-roboto text-3xl font-900 w-72 text-home-heading">{title}</span>
-                <span className="font-normal text-opacity-70  text-xl w-72 font-roboto-serif opacity-65">Choice for growing agencies and support that acts as your ecommerce businesses.</span>
+                <span className=" font-roboto max-2xl:text-2xl text-3xl max-md:text-2xl font-900 w-72 text-home-heading">{title}</span>
+                <span className="font-normal text-opacity-70 max-md:text-lg  text-xl w-64 font-roboto-serif opacity-65">Choice for growing agencies and support that acts as your ecommerce businesses.</span>
             </div>
         </div>
     </div>
@@ -91,11 +91,11 @@ const Discover: React.FC = () => {
                 <span className="text-[#016AFB]">Discover</span> all Our Web Hosting Features
             </span>
             <div className=' flex justify-center'>
-            <span className="text-center text-3xl max-md:mx-8 max-lg:mx-24 sm:text-2xl w-[900px] font-medium font-roboto-serif tracking-tight z-10">
+            <span className="text-center text-3xl max-md:mx-8 max-lg:mx-24 max-md:text-lg sm:text-2xl w-[900px] font-medium font-roboto-serif tracking-tight z-10">
                 Focus on your business and avoid all the web hosting hassles. Our managed hosting guarantees unmatched performance, reliability, and choice with 24/7 support that acts as your extended team.
             </span>
             </div>
-            <div className="flex justify-center pt-24 max-md:pt-2 mx-28 max-lg:pt-10 max-2xl:mx-10 max-md:mx-2">
+            <div className="flex justify-center pt-24 max-md:pt-2 mx-28 max-lg:pt-10 max-2xl:mx-2 max-md:mx-2">
                 <div className="grid grid-cols-4 max-xl:grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1 gap-8">
                     {domainDetails.map((domain, index) => (
                         <DomainCard

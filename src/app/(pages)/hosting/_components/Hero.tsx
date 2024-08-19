@@ -18,10 +18,10 @@ const Hero = () => {
         <div className="flex flex-col lg:flex-row justify-between items-center ml-[82px] mr-[4vw] gap-10 max-2xl:gap-10 max-xl:mr-0 max-2xl:ml-6 max-2xl:mr-0">
           <div className="flex flex-col gap-5 max-md:gap-4 items-center lg:items-start text-center lg:text-left">
             {/* Heading */}
-            <h1 className="text-7xl  tracking-tighter  max-md:text-2xl max-2xl:leading-[52.5px] max-2xl:text-[48px] max-xl:text-[38px] font-roboto  text-home-heading font-800">
+            <h1 className="text-[70px] leading-tight   tracking-tighter  max-md:text-2xl  max-2xl:text-[48px] max-xl:text-[38px] font-roboto  text-home-heading font-800">
             Fast<span className=" text-home-primary font-mono">.</span> Secure<span className=" text-home-primary font-mono">.</span>Stable <br />Web Hosting
             </h1>
-            <p className="text-3xl max-2xl:text-[22px] max-xl:text-lg font-roboto-serif  text-text-900/80 w-[720px] max-2xl:w-[650px] max-xl:w-[550px] max-lg:w-[400px] max-md:w-[320px] max-sm:w-[300px]">
+            <p className="text-3xl max-2xl:text-[22px] max-xl:text-lg font-roboto-serif  text-text-900/80 w-[740px] max-2xl:w-[600px] max-xl:w-[550px] max-lg:w-[400px] max-md:w-[320px] max-sm:w-[300px]">
             We minimise your downtime with our reliable technical experts and IT infrastructure management
             </p>
             <button className="bg-background-button px-6 md:px-8 lg:px-10 py-2 md:py-4 text-white text-base md:text-lg lg:text-2xl font-700 rounded-[8px] shadow-[0px_2px_2px_0px_#00000040]">

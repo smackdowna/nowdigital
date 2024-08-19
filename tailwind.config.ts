@@ -38,6 +38,8 @@ const config: Config = {
         },
       },
       backgroundImage: {
+        "background-Gsuite-banner": "linear-gradient(270.23deg, #0066FF 0.38%, #009952  99.99%)",
+        "background-Gsuite": "linear-gradient(270.23deg, #009952 0.38%, #0066FF  99.99%)",
         "background-reason": "linear-gradient(180deg, #01A9A9  0%, #0164F9  100%)",
         "background-button": "linear-gradient(265.93deg, #00A7A7 0%, #0066FF 100%)",
         "gradient-hosting-hero":"linear-gradient(291.46deg, #C5FFFF 35.97%, #B8D4FF 64.77%)",

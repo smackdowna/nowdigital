@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { ICONS } from '@/assets';
 import Image from 'next/image';
 import React, { useState, useRef, useEffect } from 'react';
@@ -78,12 +78,16 @@ const FAQItem: React.FC<FAQItemProps> = ({ question, answer }) => {
     );
 };
 
-const FAQs: React.FC = () => {
+interface FAQsProps {
+    bgColor?: string;
+}
+
+const FAQs: React.FC<FAQsProps> = ({ bgColor  }) => {
     return (
-        <div className='bg-gradient-domain-hero flex flex-col gap-4 px-4'>
-            <div className='flex justify-center pt-[150px] max-md:pt-10 max-lg:pt-10'>
+        <div className={`${bgColor} flex flex-col gap-4 px-4`}>
+            <div className='flex justify-center pt-[120px] max-md:pt-10 max-lg:pt-10'>
                 <span className='text-center text-6xl max-lg:text-4xl max-md:text-3xl font-900 w-full max-w-[1300px] text-home-heading font-roboto'>
-                    Still not sure? Here are some answers for your queries
+                    Still not sure? <br /> Here are some answers for your queries
                 </span>
             </div>
             <div className='flex justify-center pt-4 md:pt-10'>

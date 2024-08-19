@@ -34,8 +34,8 @@ const TestimonialCard = (props: Props) => {
           className=" max-md:w-[18px]"
         />
       </div>
-      <div className={twMerge("w-[68%] max-w-[calc(100%-100px)] xl:max-w-[calc(100%-150px)] max-md:text-[12px]")}>
-        <span className="text-[20px] max-2xl:text-[15px] max-md:text-[10px] text-home-heading font-roboto-serif font-500">
+      <div className={twMerge("w-[68%] max-w-[calc(100%-100px)] xl:max-w-[calc(100%-150px)] max-md:text-[12px] mb-20 max-lg:mb-10")}>
+        <span className="text-[30px] max-md:text-sm max-2xl:text-[20px] text-home-heading font-roboto-serif font-500 ">
           {props.quote.length > 130
             ? `${props.quote.slice(0, 130)}...`
             : props.quote}

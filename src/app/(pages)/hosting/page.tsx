@@ -44,7 +44,7 @@ const Page = () => {
         <Reason />
       </div>
       <div ref={faqsRef}>
-        <FAQs />
+        <FAQs bgColor='bg-gradient-hosting-hero'/>
       </div>
     </div>
   );
