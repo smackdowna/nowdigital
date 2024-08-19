@@ -40,5 +40,4 @@ const Reason = () => {
     </div>
   );
 };
-
 export default Reason;

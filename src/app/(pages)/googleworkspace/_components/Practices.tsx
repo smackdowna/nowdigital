@@ -11,7 +11,7 @@ const Practices = () => {
                 </span>
             </div>
             <div className='flex justify-center px-20 max-xl:px-2'>
-                <div className='flex flex-col lg:flex-row justify-between items-center w-full  space-y-8 lg:space-y-0'>
+                <div className='flex flex-col lg:flex-row justify-around items-center w-full  space-y-8 lg:space-y-0'>
                     <div className='pb-10'>
                         <div className="pt-4 lg:pt-16 text-white space-y-8">
                             <div>
