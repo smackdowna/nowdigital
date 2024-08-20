@@ -11,13 +11,13 @@ const SummaryPage = () => (
     <table className="table-auto p-4 bg-white rounded-lg shadow">
         <thead>
             <tr>
-                <th className="font-bold border-b-2 p-4 dark:border-dark-5 whitespace-nowrap font-bold text-gray-900">
+                <th className="font-bold border-b-2 p-4 dark:border-dark-5 whitespace-nowrap  text-gray-900">
                     Product
                 </th>
-                <th className="font-bold border-b-2 p-4 dark:border-dark-5 whitespace-nowrap font-bold text-gray-900">
+                <th className="font-bold border-b-2 p-4 dark:border-dark-5 whitespace-nowrap  text-gray-900">
                     Duration
                 </th>
-                <th className="font-bold border-b-2 p-4 dark:border-dark-5 whitespace-nowrap font-bold text-gray-900">
+                <th className="font-bold border-b-2 p-4 dark:border-dark-5 whitespace-nowrap  text-gray-900">
                     Price
                 </th>
             </tr>
