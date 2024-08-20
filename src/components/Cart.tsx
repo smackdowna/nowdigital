@@ -304,7 +304,7 @@ const Cart: React.FC<SidebarProps> = ({ onClick }) => {
             case 1:
                 return <SummaryPage />;
             case 2:
-                // return <LoginPage />;
+                return <LoginPage />;
                 // return <Registration/>
             case 3:
                 return <PaymentPage />;
