@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { ICONS } from '@/assets';
+import Cart from './Cart';
 import { useState } from 'react';
 
 interface NavbarProps {
@@ -15,6 +16,11 @@ const Navbar: React.FC<NavbarProps> = ({ navbarBg }) => {
         setIsProductDropdownOpen(!isProductDropdownOpen);
     };
 
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleOpen = () => {
+        setIsOpen(!isOpen);
+    };
     return (
         <div className={`z-50 fixed w-full top-0 left-0 right-0 transition-colors duration-500 ${navbarBg}`}>
             <nav className="relative items-center justify-between h-[60px] xl:h-[55px]">
@@ -43,7 +49,7 @@ const Navbar: React.FC<NavbarProps> = ({ navbarBg }) => {
                             </div>
                         </div>
                         <div className="flex justify-end gap-10 ml-auto">
-                            <div className="hidden md:flex gap-4">
+                            <div className="hidden md:flex gap-4 sm:hidden">
                                 <button className="bg-white border-[2px] max-lg:hidden border-[#0055FF] text-[#0055FF] px-4 py-2 rounded-[4px] text-[15px] font-bold">
                                     Log in
                                 </button>
@@ -52,7 +58,10 @@ const Navbar: React.FC<NavbarProps> = ({ navbarBg }) => {
                                 </button>
                             </div>
                             <div className="flex gap-4 max-sm:gap-2 items-center">
-                                <Image src={ICONS.chart} alt="Chart Icon" className="block w-[25px]" />
+                                <Image src={ICONS.chart} alt="Chart Icon" className="block w-[25px] cursor-pointer" onClick={toggleOpen} />
+                                {isOpen && (
+                                        <Cart onClick={toggleOpen}/>
+                                )}
                                 <Image src={ICONS.menu} alt="menu" className="w-[25px] lg:hidden" />
                             </div>
                         </div>
