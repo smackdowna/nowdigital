@@ -53,6 +53,29 @@ import Check from "@/assets/icons/check 1.svg"
 import Close from "@/assets/icons/ic_round-close.svg"
 import GsuiteHero from "@/assets/icons/Group 69102.svg"
 import blur from "@/assets/icons/image 2841.svg"
+import productbanner from "@/assets/icons/Screenshot 2024-04-23 at 2.08 1.svg"
+import Domain from "@/assets/icons/Group 70507.svg"
+import Hosting from "@/assets/icons/Web Hosting Companies - iconSvg.co.svg"
+import workspace from "@/assets/icons/Group 70552.svg"
+import NDE from "@/assets/icons/Vector (1).svg"
+import chatNow from "@/assets/icons/Group 70567.svg"
+import SpotNow from "@/assets/icons/Group 70501.svg"
+import PeopleNow from "@/assets/icons/Group 70449.svg"
+import market from "@/assets/icons/Group 70463.svg"
+import newGoogle from "@/assets/icons/Vector (2).svg"
+import Meta from "@/assets/icons/icons8-meta 1.svg"
+import MailNow from "@/assets/icons/Send Email Without Attachment - iconSvg.co.svg"
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -127,7 +150,7 @@ import HostHero from "@/assets/images/Group 70488.svg"
 import person from "@/assets/images/image 2838.svg"
 import database from "@/assets/cart/database.png"
 import google from "@/assets/cart/google.png"
-import www from "@/assets/cart/Www.png"
+import www from "@/assets/cart/www.png"
 import trash from "@/assets/cart/trash.png"
 
 
@@ -197,7 +220,20 @@ import trash from "@/assets/cart/trash.png"
     Check,
     Close,
     GsuiteHero,
-    blur
+    blur,
+    productbanner,
+    Domain,
+    Hosting,
+    workspace,
+    NDE,
+    chatNow,
+    SpotNow,
+    PeopleNow,
+    market,
+    newGoogle,
+    Meta,
+    MailNow
+
     
   };
 
