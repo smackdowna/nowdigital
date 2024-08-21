@@ -2,6 +2,8 @@
 import { ICONS, IMAGES } from "@/assets";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
+import TextTransition, { presets } from "react-text-transition";
+
 
 interface Domain {
   name: string;
@@ -10,7 +12,6 @@ interface Domain {
 }
 
 const words = [".education", ".travel", ".fun", ".online"];
-
 const Hero = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
@@ -31,6 +32,15 @@ const Hero = () => {
 
   const handleSearchClick = () => setIsModalOpen(true);
   const handleCloseModal = () => setIsModalOpen(false);
+  const TEXTS = ["travel", "tech", "education", "fun", "online"];
+  const getTextColor = (text: string) => {
+    if (text === "travel" || text === "fun") {
+      return "#A2197F";
+    } else {
+      return "#0011FF";
+    }
+  };
+
 
   const handleAddToCart = (domain: Domain) => {
     setDomains(domains.map(d =>
@@ -109,19 +119,23 @@ const Hero = () => {
         style={{ zIndex: "-1" }}
       />
       <div className="flex flex-col items-center gap-2 z-10">
-        <div className="flex justify-center items-center gap-4">
-          <span className="text-center text-[64px] w-auto max-lg:text-3xl max-2xl:text-5xl max-md:text-sm font-900 font-roboto tracking-tighter text-home-heading">
-            Expand your horizons with
-          </span>
-          <span className="text-domain-primary text-[64px] max-lg:text-3xl max-2xl:text-5xl max-md:text-sm font-900">
-            {words[currentWordIndex]}
-          </span>
-        </div>
-        <span className="text-center text-[26px] max-lg:text-[18px] font-500 max-md:text-[12px] font-roboto tracking-tighter">
+      <div className="font-900 text-[16px] md:text-[33px] w-auto xl:text-[46px] 2xl:text-[56px] leading-[30px] md:leading-[46px] xl:leading-[67px] text-primary-500  flex gap-[5px] justify-center  xl:w-[1300px]">
+            <span className=" w-auto">Expand your horizons with .</span>
+            <TextTransition
+              direction="down"
+              springConfig={presets.gentle}
+              delay={0}
+              style={{ color: getTextColor(TEXTS[currentWordIndex % TEXTS.length]) }}
+            >
+              {TEXTS[currentWordIndex % TEXTS.length]}
+            </TextTransition>
+          </div>
+
+        <span className="text-center text-[26px] text-home-heading max-lg:text-[18px] font-900 tracking-tight max-md:text-[12px] font-roboto ">
           Get started with the perfect domain.
         </span>
       </div>
-      <div className="flex justify-center w-full pb-24 max-lg:pb-4 max-md:pb-2 z-10">
+      <div className="flex justify-center w-full pb-10 max-lg:pb-4 max-md:pb-2 z-10">
         <div className="flex m-3 rounded-xl">
           <input
             className="w-[700px] max-2xl:w-[500px] max-xl:w-[400px] max-md:w-[200px] p-5 max-lg:p-3 max-md:p-2 border rounded-l-xl max-md:placeholder:text-[10px]"
@@ -135,7 +149,7 @@ const Hero = () => {
           </button>
         </div>
       </div>
-      <span className="text-center text-2xl max-2xl:text-xl max-lg:text-lg font-600 pt-[80px] max-lg:pt-10 max-md:pt-10 lg:pt-[120px] pb-[20px] md:pb-[30px] lg:pb-[40px] leading-[20.4px] text-home-body justify-center font-roboto-serif z-10">
+      <span className="text-center text-2xl max-2xl:text-xl max-lg:text-lg font-600 pt-[10px] max-lg:pt-10 max-md:pt-10 lg:pt-[120px] pb-[20px] md:pb-[30px] lg:pb-[40px] leading-[20.4px] text-home-body justify-center font-roboto-serif z-10">
         12,000+ global businesses trust us to transform & grow digitally
       </span>
       <div className="flex justify-center items-center gap-4 md:gap-8 lg:gap-16 pb-6 overflow-hidden z-10">
@@ -166,10 +180,18 @@ const Hero = () => {
                 </button>
               </div>
             </div>
-            <div className="max-h-[400px] md:max-h-[500px] lg:max-h-[600px] max-md:max-h-[300px] overflow-y-auto overflow-hidden">
+            <div className="p-2">
               {domains.map((domain) => (
-                <DomainItem key={domain.name} domain={domain} />
+                <div className="py-1" key={domain.name}>
+                  <DomainItem domain={domain} />
+                </div>
               ))}
+              {cart.length > 0 && (
+                <div className="flex items-center justify-between my-4 font-roboto font-700 bg-home-body p-4">
+                  <span className="text-2xl text-white">{cart.length} item{cart.length > 1 ? 's' : ''} added to your cart</span>
+                  <button className="text-2xl text-black bg-home-secondary mx-4 px-10 py-2 rounded-md">View Cart</button>
+                </div>
+              )}
             </div>
           </div>
         </div>
