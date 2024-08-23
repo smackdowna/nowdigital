@@ -127,7 +127,7 @@ import HostHero from "@/assets/images/Group 70488.svg"
 import person from "@/assets/images/image 2838.svg"
 import database from "@/assets/cart/database.png"
 import google from "@/assets/cart/google.png"
-import www from "@/assets/cart/Www.png"
+import www from "@/assets/cart/www.png"
 import trash from "@/assets/cart/trash.png"
 
 
