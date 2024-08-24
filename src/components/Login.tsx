@@ -24,8 +24,13 @@ interface LoginProps {
     isOpen: boolean;
 }
 
+interface LoginFormInputs {
+    email: string;
+    password: string;
+}
+
 const Login: React.FC<LoginProps> = ({ onClose, isOpen }) => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm<LoginFormInputs>();
     const mutation = useMutation({
         mutationFn: loginUser,
         onSuccess: () => {
@@ -37,7 +42,7 @@ const Login: React.FC<LoginProps> = ({ onClose, isOpen }) => {
         },
     });
 
-    const onSubmit = (data: { email: string; password: string }) => {
+    const onSubmit = (data: LoginFormInputs) => {
         mutation.mutate(data);
     };
 

@@ -223,13 +223,11 @@ const Hero = () => {
               </div>
             </div>
             <div className="p-2 h-[300px] overflow-y-scroll hide-scrollbar">
-              {domains.map((domain) => (
                 <div>
                   {domains.map((domain, index) => (
                     <DomainItem key={index} domain={domain} />
                   ))}
                 </div>
-              ))}
             </div>
             {cart.length > 0 && (
               <div className="flex items-center justify-between my-4 font-roboto font-700 bg-home-body px-10 max-md:px-2 max-md:mx-4 mx-5 py-3 max-md:py-1">
