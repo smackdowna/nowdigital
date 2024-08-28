@@ -3,36 +3,74 @@ import { CART } from '@/assets';
 import { useState, useEffect } from 'react';
 
 interface CartItem {
-    name: string;
-    link: string;
-    price?: { registerPrice: string }[]; // Adjust this based on your actual data structure
+    product: string;
+    productId: string;
+    domainName?: string; // Optional for some products
+    period?: string; // Optional for some products
+    name?: string; // Optional for some products
+    status?: string; // Optional for some products
+    price?: {
+        productId: string;
+        tld: string;
+        year: number;
+        registerPrice: number;
+        _id: string;
+    }[];
 }
 
 interface Product {
     name: string;
     link: string;
-    img: StaticImageData; // Assuming you're using a static image
+    img: StaticImageData; // Assuming static images for simplicity
     price: string;
+    domainName?: string; // Optional field
+    period?: string; // Optional field
 }
 
 const SummaryPage = () => {
     const [products, setProducts] = useState<Product[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
-        // Fetch cart items from local storage
-        const savedCart = localStorage.getItem('cart');
-        const cartItems: CartItem[] = savedCart ? JSON.parse(savedCart) : [];
-        
-        // Transform cart items to match your products structure
-        const formattedProducts: Product[] = cartItems.map((item: CartItem) => ({
-            name: item.name,
-            link: item.link, // Assuming 'link' is part of your domain item
-            img: CART.google, // Replace with appropriate image mapping if needed
-            price: item.price ? `₹${item.price[0].registerPrice}` : "N/A",
-        }));
-        
-        setProducts(formattedProducts);
+        const fetchCartItems = () => {
+            try {
+                const savedCart = localStorage.getItem('cart');
+                const cartItems: CartItem[] = savedCart ? JSON.parse(savedCart) : [];
+
+                const formattedProducts: Product[] = cartItems.map((item) => {
+                    if (item.product === "Hosting") {
+                        return {
+                            name:"Domain" ,
+                            link: item.domainName || "Unknown Hosting", // Set appropriate link if available
+                            img: CART.database, // Map to actual image if needed
+                            price: "N/A", // Set appropriate price if available
+                            domainName: item.domainName,
+                            period: item.period,
+                        };
+                    } else {
+                        return {
+                            name: "Hosting",
+                            link: item.name || "Unknown Product", // Set appropriate link if available
+                            img: CART.www, // Map to actual image if needed
+                            price: item.price ? `₹${item.price[0].registerPrice}` : "N/A",
+                        };
+                    }
+                });
+
+                setProducts(formattedProducts);
+            } catch (error) {
+                console.error('Error fetching cart items:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchCartItems();
     }, []);
+
+    if (loading) {
+        return <div className="text-center">Loading...</div>;
+    }
 
     return (
         <div className="overflow-x-auto">
@@ -44,15 +82,9 @@ const SummaryPage = () => {
                 <table className="min-w-full divide-y divide-gray-200">
                     <thead className="bg-white text-center whitespace-nowrap">
                         <tr>
-                            <th className="px-4 py-4 text-xs md:text-sm lg:text-base font-bold text-black tracking-wider">
-                                Product
-                            </th>
-                            <th className="px-4 py-4 text-xs md:text-sm lg:text-base font-bold text-black tracking-wider">
-                                Duration
-                            </th>
-                            <th className="px-4 py-4 text-xs md:text-sm lg:text-base font-bold text-black tracking-wider">
-                                Price
-                            </th>
+                            <th className="px-4 py-4 text-xs md:text-sm lg:text-base font-bold text-black tracking-wider">Product</th>
+                            <th className="px-4 py-4 text-xs md:text-sm lg:text-base font-bold text-black tracking-wider">Domain/Details</th>
+                            <th className="px-4 py-4 text-xs md:text-sm lg:text-base font-bold text-black tracking-wider">Price</th>
                         </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
@@ -61,20 +93,19 @@ const SummaryPage = () => {
                                 <td className="flex items-center px-4 py-4 text-sm md:text-base lg:text-lg text-gray-800">
                                     <Image src={product.img} alt={product.name} className="w-6 h-6 md:w-12 md:h-12 lg:w-12 lg:h-12" />
                                     <div className="ml-2">
-                                        <span className=' font-900'>Google Workspace</span>
                                         <h3 className="text-xs md:text-sm lg:text-base font-semibold">{product.name}</h3>
                                         <a href={product.link} className="text-blue-500 text-xs md:text-sm lg:text-base">{product.link}</a>
                                     </div>
                                 </td>
                                 <td className="text-sm md:text-base lg:text-lg text-gray-800">
-                                    <div className="relative">
-                                        <select className="w-full h-10 border border-gray-300 text-sm md:text-base lg:text-lg text-gray-800 outline-none bg-white hover:bg-gray-50">
-                                            <option value="1">Annually</option>
-                                            <option value="2">Quarterly</option>
-                                            <option value="3">Half Yearly</option>
-                                            <option value="4">Monthly</option>
-                                        </select>
-                                    </div>
+                                    {product.domainName ? (
+                                        <div>
+                                            <p>{product.domainName}</p>
+                                            {product.period && <p>{product.period}</p>}
+                                        </div>
+                                    ) : (
+                                        "N/A"
+                                    )}
                                 </td>
                                 <td className="px-4 py-4 text-sm md:text-base lg:text-lg text-gray-800">
                                     <div className="flex items-center">
