@@ -8,6 +8,12 @@ import axios from "axios";
 import Cart from "@/components/Cart";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsSidebarOpen } from "@/store/sidebarSlice";
+import {
+  handleAddAItemToCartService,
+  handleGetAllCartItemsService,
+  handleUpdateCartService,
+} from "@/services/cart";
+import { toast } from "sonner";
 
 interface Domain {
   name: string;
@@ -44,6 +50,7 @@ const Hero = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
   const { isSidebarOpen } = useSelector((state: any) => state.sidebar);
+  const { isAuthenticated } = useSelector((state: any) => state.auth);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [cart, setCart] = useState<Domain[]>(() => {
     // Load the cart from local storage if it exists
@@ -61,6 +68,12 @@ const Hero = () => {
     queryKey: ["domainAvailability", searchQuery],
     queryFn: () => fetchDomainAvailability(searchQuery),
     enabled: false,
+  });
+
+  const { isLoading, isError, data } = useQuery({
+    queryKey: ["cart"],
+    queryFn: () => handleGetAllCartItemsService("INR"),
+    enabled: isAuthenticated,
   });
 
   useEffect(() => {
@@ -81,18 +94,36 @@ const Hero = () => {
       setIsModalOpen(true);
     });
   };
-
+  const { mutate, isPending: isAddToCartPending } = useMutation({
+    mutationFn: (data: any) => handleAddAItemToCartService(data),
+    onError: (error: string) => {
+      toast.error(error);
+    },
+    onSuccess: () => {
+      toast.success("Domain added to cart");
+      queryClient.invalidateQueries({
+        queryKey: ["cart"],
+      });
+      // dispatch(setIsSidebarOpen(!isSidebarOpen));
+      // dispatch(setIsSideBarActive(true));
+    },
+  });
   const handleCloseModal = () => setIsModalOpen(false);
 
   const handleAddToCart = (domain: Domain) => {
-    setCart([...cart, domain]);
-    queryClient.setQueryData<Domain[]>(
-      ["domainAvailability", searchQuery],
-      (oldDomains = []) =>
-        oldDomains.map((d) =>
-          d.name === domain.name ? { ...d, status: "Added" } : d
-        )
-    );
+    if (isAuthenticated) {
+      const data = queryClient.getQueryData<any>(["cart"]);
+      mutate(data);
+    } else {
+      setCart([...cart, domain]);
+      queryClient.setQueryData<Domain[]>(
+        ["domainAvailability", searchQuery],
+        (oldDomains = []) =>
+          oldDomains.map((d) =>
+            d.name === domain.name ? { ...d, status: "Added" } : d
+          )
+      );
+    }
   };
 
   const handleRemoveFromCart = (domain: Domain) => {
