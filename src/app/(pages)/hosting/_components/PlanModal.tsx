@@ -85,16 +85,28 @@ const PlanModal: React.FC<PlanModalProps> = ({
         });
       };
 
-    useEffect(() => {
+      useEffect(() => {
         if (data) {
             const currentProduct = data.product[index]._id;
-            const cartItems = selectedDomains.map(domain => ({
+            // Retrieve the current cart from localStorage
+            const existingCart = JSON.parse(localStorage.getItem('cart') || '[]');
+            
+            // Remove existing entries for the current product
+            const filteredCart = existingCart.filter((item: any) => item.productId !== currentProduct);
+    
+            // Create new entries for selected domains
+            const newCartItems = selectedDomains.map(domain => ({
                 product: "Hosting",
                 productId: currentProduct,
                 domainName: domain.name,
                 period: selectedPeriod
             }));
-            localStorage.setItem('cart', JSON.stringify(cartItems));
+    
+            // Combine the filtered existing cart with new items
+            const updatedCart = [...filteredCart, ...newCartItems];
+    
+            // Store the updated cart back into localStorage
+            localStorage.setItem('cart', JSON.stringify(updatedCart));
         }
     }, [selectedDomains, selectedPeriod, data, index]);
 

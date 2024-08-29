@@ -14,8 +14,13 @@ interface Domain {
     price?: { registerPrice: number }[];
 }
 interface Price { period: string; amount: number; }
-interface PlanFeatureProps { title: string; starter: string; advanced: string; premium: string; }
-interface PlanCardProps { name: string; price: string; isStarter?: boolean; onAddToCart: () => void; showDropdown: boolean; }
+interface PlanFeatureProps {
+    title: string;
+    starterIcon: any; // You can replace `any` with the correct type, e.g., `string` or `StaticImageData` if using Next.js Image
+    advancedIcon: any;
+    premiumIcon: any;
+    iconSrc: any;
+}interface PlanCardProps { name: string; price: string; isStarter?: boolean; onAddToCart: () => void; showDropdown: boolean; }
 
 const fetchDomainAvailability = async (domain: string) => {
     const response = await axios.post(

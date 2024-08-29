@@ -3,8 +3,7 @@ import { IMAGES } from '@/assets';
 import React, { useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import {  toast } from 'sonner';
-
+import { toast } from 'sonner';
 
 interface Domain {
     name: string;
@@ -27,8 +26,21 @@ interface PlanModalProps {
     index: number;
 }
 
-const fetchPlans = async () => {
-    const response = await axios.get('https://liveserver.nowdigitaleasy.com:5000/product//hosting?country_code=IN');
+interface Product {
+    _id: string;
+    name: string;
+    description: string;
+    discount: number;
+    price: {
+        period: string;
+        defaultPrice: number;
+        offerPrice: number;
+        type: string;
+    }[];
+}
+
+const GsuitePlans = async () => {
+    const response = await axios.get('https://liveserver.nowdigitaleasy.com:5000/product//Gsuite?country_code=IN');
     if (!response) {
         throw new Error('Network response was not ok');
     }
@@ -49,52 +61,64 @@ const PlanModal: React.FC<PlanModalProps> = ({
     isFetching,
     index
 }) => {
-    const [selectedPeriod, setSelectedPeriod] = useState('monthly');
-    const [price, setPrice] = useState<number>(0);
-    const [selectedDomains, setSelectedDomains] = useState<Domain[]>([]);
+    const [selectedPeriod, setSelectedPeriod] = useState('Annual-Monthly');
+    const [price, setPrice] = useState < number > (0);
+    const [selectedDomains, setSelectedDomains] = useState < Domain[] > ([]);
 
-    const { data, isError, isLoading } = useQuery({ queryKey: ["plans"], queryFn: fetchPlans });
+    const { data, isError, isLoading } = useQuery({ queryKey: ["Gsuite"], queryFn: GsuitePlans });
 
     useEffect(() => {
-        if (data && data.product && data.product.length > 0) {
-            const initialPrice = data.product[index].price.find((p: { period: string; }) => p.period === selectedPeriod);
-            setPrice(initialPrice ? initialPrice.amount : 0);
+        if (data && data.products && data.products.length > 0) {
+            const initialPrice = data.products[index].price.find((p: { period: string; }) => p.period === selectedPeriod);
+            setPrice(initialPrice ? initialPrice.offerPrice : 0);
         }
-    }, [data, selectedPeriod]);
+    }, [data, selectedPeriod, index]);
 
     const handleDurationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const selected = e.target.value;
         setSelectedPeriod(selected);
 
-        if (data && data.product && data.product[index]) {
-            const selectedPrice = data.product[index].price.find((p: { period: string; }) => p.period === selected);
-            setPrice(selectedPrice ? selectedPrice.registerPrice : 0);
+        if (data && data.products && data.products[index]) {
+            const selectedPrice = data.products[index].price.find((p: { period: string; }) => p.period === selected);
+            setPrice(selectedPrice ? selectedPrice.offerPrice : 0);
         }
     };
 
     const toggleDomainSelection = (domain: Domain) => {
         setSelectedDomains(prevSelected => {
-          const isSelected = prevSelected.some(d => d.name === domain.name);
-          if (isSelected) {
-            toast.success(`${domain.name} removed from cart`);
-            return prevSelected.filter(d => d.name !== domain.name);
-          } else {
-            toast.success(`${domain.name} added to cart`);
-            return [...prevSelected, domain];
-          }
+            const isSelected = prevSelected.some(d => d.name === domain.name);
+            if (isSelected) {
+                toast.success(`${domain.name} removed from cart`);
+                return prevSelected.filter(d => d.name !== domain.name);
+            } else {
+                toast.success(`${domain.name} added to cart`);
+                return [...prevSelected, domain];
+            }
         });
-      };
+    };
 
     useEffect(() => {
         if (data) {
-            const currentProduct = data.product[index]._id;
-            const cartItems = selectedDomains.map(domain => ({
-                product: "Hosting",
+            const currentProduct = data.products[index]._id;
+            // Retrieve the current cart from localStorage
+            const existingCart = JSON.parse(localStorage.getItem('cart') || '[]');
+            
+            // Remove existing entries for the current product
+            const filteredCart = existingCart.filter((item: any) => item.productId !== currentProduct);
+
+            // Create new entries for selected domains
+            const newCartItems = selectedDomains.map(domain => ({
+                product: "Gsuite",
                 productId: currentProduct,
                 domainName: domain.name,
                 period: selectedPeriod
             }));
-            localStorage.setItem('cart', JSON.stringify(cartItems));
+
+            // Combine the filtered existing cart with new items
+            const updatedCart = [...filteredCart, ...newCartItems];
+
+            // Store the updated cart back into localStorage
+            localStorage.setItem('cart', JSON.stringify(updatedCart));
         }
     }, [selectedDomains, selectedPeriod, data, index]);
 
@@ -126,7 +150,7 @@ const PlanModal: React.FC<PlanModalProps> = ({
                     </span>
                     <div className="">
                         <span className="text-[14px] text-center max-md:hidden  max-lg:text-xs ">
-                            {domain.price && domain.price.length > 0 ? `then   ₹${domain.price[0].registerPrice + 2}/Year` : ''}
+                            {domain.price && domain.price.length > 0 ? `then ₹${domain.price[0].registerPrice + 2}/Year` : ''}
                         </span>
                     </div>
                 </div>
@@ -160,19 +184,12 @@ const PlanModal: React.FC<PlanModalProps> = ({
     if (isLoading) return <div>Loading...</div>;
     if (isError) return <div>Error loading plans</div>;
 
-    const currentProduct = data?.product[index];
+    const currentProduct = data?.products[index];
 
     return (
         <div className="fixed inset-0 z-50 flex items-end justify-center">
-            <div className="relative w-[80vw] rounded-lg border border-black shadow-lg mb-8">
-                <Image
-                    src={IMAGES.HostBanner}
-                    alt="home banner"
-                    layout="fill"
-                    objectFit="cover"
-                    quality={100}
-                    className="absolute inset-0  rounded-lg bg-gradient-hosting-hero"
-                />
+            <div className="relative w-[80vw] rounded-lg border border-black shadow-lg mb-8 bg-background-Gsuite-banner">
+
                 <div className="p-4 relative">
                     {currentStep === 0 && currentProduct && (
                         <div>
@@ -200,7 +217,7 @@ const PlanModal: React.FC<PlanModalProps> = ({
                                     </div>
                                     <div className='flex flex-col gap-1'>
                                         <span className='font-roboto font-900 text-4xl text-home-heading'>Total</span>
-                                        <span className='text-4xl font-400 font-roboto-serif'>{price}/-</span>
+                                        <span className='text-4xl font-400 font-roboto-serif'>₹{price}/-</span>
                                     </div>
                                     <button
                                         className='bg-home-primary text-3xl font-900 text-white py-4 px-4 rounded-2xl'
@@ -212,7 +229,7 @@ const PlanModal: React.FC<PlanModalProps> = ({
                             </div>
                         </div>
                     )}
-                    {currentStep === 1 && (
+                      {currentStep === 1 && (
                         <div className='flex flex-col items-start px-10'>
                             <div className='flex items-center gap-16 mx-3'>
                                 <div className='flex items-center gap-4'>

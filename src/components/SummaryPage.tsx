@@ -40,18 +40,27 @@ const SummaryPage = () => {
                 const formattedProducts: Product[] = cartItems.map((item) => {
                     if (item.product === "Hosting") {
                         return {
-                            name:"Domain" ,
-                            link: item.domainName || "Unknown Hosting", // Set appropriate link if available
-                            img: CART.database, // Map to actual image if needed
-                            price: "N/A", // Set appropriate price if available
+                            name: "Hosting",
+                            link: item.domainName || "Unknown Hosting",
+                            img: CART.database, // Use the appropriate image
+                            price: "N/A", // Update price logic as needed
+                            domainName: item.domainName,
+                            period: item.period,
+                        };
+                    } else if (item.product === "Gsuite") {
+                        return {
+                            name: "Gsuite",
+                            link: item.domainName || "Unknown Gsuite Product",
+                            img: CART.google, // Use the appropriate image
+                            price: "Price included in Gsuite Plan", // Set Gsuite-specific price logic
                             domainName: item.domainName,
                             period: item.period,
                         };
                     } else {
                         return {
-                            name: "Hosting",
-                            link: item.name || "Unknown Product", // Set appropriate link if available
-                            img: CART.www, // Map to actual image if needed
+                            name: "Domain",
+                            link: item.name || "Unknown Product",
+                            img: CART.www, // Use the appropriate image
                             price: item.price ? `₹${item.price[0].registerPrice}` : "N/A",
                         };
                     }
