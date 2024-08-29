@@ -22,7 +22,7 @@ interface Product {
     name: string;
     link: string;
     img: StaticImageData; // Assuming static images for simplicity
-    price: string;
+    price: string; // Keep as string for displaying with currency symbol
     domainName?: string; // Optional field
     period?: string; // Optional field
 }
@@ -30,6 +30,9 @@ interface Product {
 const SummaryPage = () => {
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
+    const [subtotal, setSubtotal] = useState<number>(0);
+    const [tax, setTax] = useState<number>(0);
+    const [total, setTotal] = useState<number>(0);
 
     useEffect(() => {
         const fetchCartItems = () => {
@@ -43,7 +46,7 @@ const SummaryPage = () => {
                             name: "Hosting",
                             link: item.domainName || "Unknown Hosting",
                             img: CART.database, // Use the appropriate image
-                            price: "N/A", // Update price logic as needed
+                            price: `₹ ${item.price}/-`, // Set Gsuite-specific price logic
                             domainName: item.domainName,
                             period: item.period,
                         };
@@ -52,7 +55,7 @@ const SummaryPage = () => {
                             name: "Gsuite",
                             link: item.domainName || "Unknown Gsuite Product",
                             img: CART.google, // Use the appropriate image
-                            price: "Price included in Gsuite Plan", // Set Gsuite-specific price logic
+                            price: `₹ ${item.price}/-`, // Set Gsuite-specific price logic
                             domainName: item.domainName,
                             period: item.period,
                         };
@@ -77,6 +80,23 @@ const SummaryPage = () => {
         fetchCartItems();
     }, []);
 
+    // Calculate subtotal, tax, and total based on the products
+    useEffect(() => {
+        if (products.length > 0) {
+            const calculatedSubtotal = products.reduce((acc, product) => {
+                const price = parseFloat(product.price.replace(/[₹,]/g, ''));
+                return acc + (isNaN(price) ? 0 : price);
+            }, 0);
+
+            const calculatedTax = calculatedSubtotal * 0.05; // Assuming 5% tax
+            const calculatedTotal = calculatedSubtotal + calculatedTax;
+
+            setSubtotal(calculatedSubtotal);
+            setTax(calculatedTax);
+            setTotal(calculatedTotal);
+        }
+    }, [products]);
+
     if (loading) {
         return <div className="text-center">Loading...</div>;
     }
@@ -88,12 +108,12 @@ const SummaryPage = () => {
                     <p className="text-lg font-semibold text-gray-500">Your cart is empty.</p>
                 </div>
             ) : (
-                <table className="min-w-full divide-y divide-gray-200">
+                <table className="min-w-full divide-y divide-gray-200 pb-10">
                     <thead className="bg-white text-center whitespace-nowrap">
                         <tr>
-                            <th className="px-4 py-4 text-xs md:text-sm lg:text-base font-bold text-black tracking-wider">Product</th>
-                            <th className="px-4 py-4 text-xs md:text-sm lg:text-base font-bold text-black tracking-wider">Domain/Details</th>
-                            <th className="px-4 py-4 text-xs md:text-sm lg:text-base font-bold text-black tracking-wider">Price</th>
+                            <th className="py-4 text-xs md:text-sm lg:text-base font-bold text-black tracking-wider">Product</th>
+                            <th className="text-xs md:text-sm lg:text-base font-bold text-black tracking-wider">Duration</th>
+                            <th className="text-xs md:text-sm lg:text-base font-bold text-black tracking-wider">Price</th>
                         </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
@@ -109,16 +129,15 @@ const SummaryPage = () => {
                                 <td className="text-sm md:text-base lg:text-lg text-gray-800">
                                     {product.domainName ? (
                                         <div>
-                                            <p>{product.domainName}</p>
                                             {product.period && <p>{product.period}</p>}
                                         </div>
                                     ) : (
                                         "N/A"
                                     )}
                                 </td>
-                                <td className="px-4 py-4 text-sm md:text-base lg:text-lg text-gray-800">
-                                    <div className="flex items-center">
-                                        <p className="font-semibold pr-4">{product.price}</p>
+                                <td className="text-sm md:text-base lg:text-lg text-gray-800">
+                                    <div className="flex items-center justify-around gap-1">
+                                        <p className="font-semibold">{product.price}</p>
                                         <button className="text-red-500">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" className="bi bi-trash" viewBox="0 0 16 16">
                                                 <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
@@ -132,6 +151,40 @@ const SummaryPage = () => {
                     </tbody>
                 </table>
             )}
+            <table className="min-w-full divide-y divide-gray-200">
+                <tbody className="bg-white divide-y divide-gray-200 whitespace-nowrap">
+                    <tr>
+                        <td className="text-sm text-gray-800 px-10">
+                            <ul className='bg-white text-left'>
+                                <li className=''></li>
+                                <li className='py-1 font-900 text-xl'>Subtotal</li>
+                                <li className='py-1 font-900 text-xl'>Tax</li>
+                            </ul>
+                        </td>
+                        <td className="flex items-center px-4 py-4 text-sm text-blue-800"></td>
+                        <td className="text-sm text-gray-800">
+                            <ul className='bg-white text-center'>
+                                <li className=''></li>
+                                <li className='py-1  text-xl'>₹{subtotal.toFixed(2)}</li>
+                                <li className='py-1  text-xl'>₹{tax.toFixed(2)}</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td className="flex items-center px-4 py-4 text-sm text-blue-800"></td>
+                        <td className="text-sm text-gray-800">
+                            <ul className='bg-white text-center'>
+                                <li className='py-1 font-900 text-xl'>Total</li>
+                            </ul>
+                        </td>
+                        <td className="text-sm text-gray-800">
+                            <ul className='bg-white text-center'>
+                                <li className='py-1 font-900 text-xl'>₹{total.toFixed(2)}</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     );
 };

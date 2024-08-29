@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SummaryPage from "@/components/SummaryPage";
 import PaymentPage from "./Paymentpage";
-import LoginPage from "./CartLogin";
 import RegistrationPage from "./RegistrationPage";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsSidebarOpen } from "@/store/sidebarSlice";
@@ -50,9 +49,8 @@ const Cart: React.FC = () => {
               <div className="w-full" key={step.id}>
                 <div className="flex items-center w-full">
                   <div
-                    className={`w-8 h-8 shrink-0 mx-[-1px] p-1.5 flex items-center justify-center rounded-full ${
-                      currentStep > step.id ? "bg-green-600" : "bg-gray-300"
-                    }`}
+                    className={`w-8 h-8 shrink-0 mx-[-1px] p-1.5 flex items-center justify-center rounded-full ${currentStep > step.id ? "bg-green-600" : "bg-gray-300"
+                      }`}
                   >
                     {currentStep > step.id ? (
                       <svg
@@ -73,16 +71,14 @@ const Cart: React.FC = () => {
                   </div>
                   {index < steps.length - 1 && (
                     <div
-                      className={`w-full h-1 ${
-                        currentStep > step.id ? "bg-blue-600" : "bg-gray-300"
-                      }`}
+                      className={`w-full h-1 ${currentStep > step.id ? "bg-blue-600" : "bg-gray-300"
+                        }`}
                     ></div>
                   )}
                 </div>
                 <h6
-                  className={`text-base font-bold mb-2 ${
-                    currentStep > step.id ? "text-green-500" : "text-gray-500"
-                  }`}
+                  className={`text-base font-bold mb-2 ${currentStep > step.id ? "text-green-500" : "text-gray-500"
+                    }`}
                 >
                   {step.name}
                 </h6>
@@ -113,7 +109,41 @@ const Cart: React.FC = () => {
 
         {currentStep === 2 && !isAuthenticated && (
           <>
-            {isLogin ? <LoginPage /> : <RegistrationPage />}
+            {isLogin ? <div className="flex flex-col justify-center items-center  px-4 ">
+              <div className="sm:w-full sm:max-w-sm">
+                <h2 className="mt-2 text-left text-base md:text-base lg:text-lg font-bold leading-9 tracking-tight text-gray-900">
+                  Existing User?
+                </h2>
+                <p className="text-sm">Please sign in with your credentials below to continue</p>
+              </div>
+              <div className="mt-4 sm:w-full sm:max-w-sm">
+                <form className="space-y-5" action="#" method="POST">
+                  <div>
+                    <label className="text-xl block">Email</label>
+                    <input
+                      type="text"
+                      placeholder="Email"
+                      className="px-4 py-3 text-sm rounded-md bg-white border border-gray-400 w-full outline-blue-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-sm block">Password</label>
+                    <input
+                      type="password"
+                      placeholder="Password"
+                      className="px-4 py-3 text-sm rounded-md bg-white border border-gray-400 w-full outline-blue-500"
+                    />
+                  </div>
+                  <div>
+                    <div className="text-sm flex items-center justify-end">
+                      <a href="#" className="font-semibold text-blue-600 hover:text-indigo-500">Forgot password?</a>
+                    </div>
+                  </div>
+                  <div>
+                  </div>
+                </form>
+              </div>
+            </div> : <RegistrationPage />}
             <div className="text-center text-sm text-gray-500">
               {isLogin ? (
                 <>

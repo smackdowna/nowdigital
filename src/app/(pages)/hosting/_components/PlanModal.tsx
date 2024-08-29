@@ -99,7 +99,8 @@ const PlanModal: React.FC<PlanModalProps> = ({
                 product: "Hosting",
                 productId: currentProduct,
                 domainName: domain.name,
-                period: selectedPeriod
+                period: selectedPeriod,
+                price:price
             }));
     
             // Combine the filtered existing cart with new items

@@ -97,12 +97,14 @@ const PlanModal: React.FC<PlanModalProps> = ({
         });
     };
 
+    console.log(price)
+
     useEffect(() => {
         if (data) {
             const currentProduct = data.products[index]._id;
             // Retrieve the current cart from localStorage
             const existingCart = JSON.parse(localStorage.getItem('cart') || '[]');
-            
+
             // Remove existing entries for the current product
             const filteredCart = existingCart.filter((item: any) => item.productId !== currentProduct);
 
@@ -111,9 +113,11 @@ const PlanModal: React.FC<PlanModalProps> = ({
                 product: "Gsuite",
                 productId: currentProduct,
                 domainName: domain.name,
-                period: selectedPeriod
+                period: selectedPeriod,
+                price: price // Add the price here
             }));
-
+    
+    
             // Combine the filtered existing cart with new items
             const updatedCart = [...filteredCart, ...newCartItems];
 
@@ -229,7 +233,7 @@ const PlanModal: React.FC<PlanModalProps> = ({
                             </div>
                         </div>
                     )}
-                      {currentStep === 1 && (
+                    {currentStep === 1 && (
                         <div className='flex flex-col items-start px-10'>
                             <div className='flex items-center gap-16 mx-3'>
                                 <div className='flex items-center gap-4'>
