@@ -1,21 +1,26 @@
-import React, { useState } from "react";
-import Image from "next/image";
-import { CART } from "@/assets";
-import { Accordion, AccordionItem } from "@nextui-org/accordion";
+import React, { useState, useEffect } from "react";
 import SummaryPage from "@/components/SummaryPage";
 import PaymentPage from "./Paymentpage";
 import LoginPage from "./CartLogin";
 import RegistrationPage from "./RegistrationPage";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@reduxjs/toolkit/query";
 import { setIsSidebarOpen } from "@/store/sidebarSlice";
 
-type SidebarProps = {};
-
-const Cart: React.FC<SidebarProps> = () => {
-  const [currentStep, setCurrentStep] = useState(1);
+const Cart: React.FC = () => {
   const dispatch = useDispatch();
   const { isSidebarOpen } = useSelector((state: any) => state.sidebar);
+  const { isAuthenticated } = useSelector((state: any) => state.auth);
+
+  const [currentStep, setCurrentStep] = useState(1);
+  const [isLogin, setIsLogin] = useState(true); // State to toggle between login and registration
+
+  useEffect(() => {
+    if (isAuthenticated && currentStep === 2) {
+      // If the user is authenticated, skip to the PaymentPage (step 3)
+      setCurrentStep(3);
+    }
+  }, [isAuthenticated, currentStep]);
+
   const steps = [
     { id: 1, name: "Summary" },
     { id: 2, name: "Login" },
@@ -23,34 +28,15 @@ const Cart: React.FC<SidebarProps> = () => {
   ];
 
   const handleNext = () => {
-    setCurrentStep(currentStep + 1);
+    setCurrentStep((prevStep) => prevStep + 1);
   };
 
-  const handlePrev = () => {
-    if (currentStep > 1) {
-      setCurrentStep(currentStep - 1);
-    }
-  };
-
-  // Function to render the content based on the current step
-  const renderStepContent = () => {
-    switch (currentStep) {
-      case 1:
-        return <SummaryPage />;
-      case 2:
-        return <LoginPage />;
-      case 3:
-        return <RegistrationPage />;
-
-      case 4:
-        return <PaymentPage />;
-      default:
-        return <SummaryPage />;
-    }
+  const toggleLogin = () => {
+    setIsLogin(!isLogin);
   };
 
   return (
-    <div className="w-full md:w-full lg:w-[40vw] ml-auto bg-white shadow-lg hs-overlay fixed inset-0 z-50 block">
+    <div className="w-full md:w-full lg:w-[40vw] ml-auto bg-white shadow-lg fixed inset-0 z-50">
       {/* Header */}
       <div
         style={{
@@ -59,7 +45,7 @@ const Cart: React.FC<SidebarProps> = () => {
         }}
       >
         <div className="mx-4">
-          <div className="flex  max-w-screen-lg py-4 mx-auto">
+          <div className="flex max-w-screen-lg py-4 mx-auto">
             {steps.map((step, index) => (
               <div className="w-full" key={step.id}>
                 <div className="flex items-center w-full">
@@ -105,9 +91,7 @@ const Cart: React.FC<SidebarProps> = () => {
           </div>
           <button
             className="absolute top-4 right-4 text-sm text-gray-500"
-            onClick={() => {
-              dispatch(setIsSidebarOpen(!isSidebarOpen));
-            }}
+            onClick={() => dispatch(setIsSidebarOpen(!isSidebarOpen))}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -124,64 +108,48 @@ const Cart: React.FC<SidebarProps> = () => {
       </div>
 
       {/* Main Content */}
-      <div className="">
-        {currentStep === 1 && (
-          <div>
-            <SummaryPage />
-            <div className="flex justify-center">
-              <button
-                onClick={handleNext}
-                className="mt-4 w-2/4 bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
-              >
-                Continue to Cart
-              </button>
+      <div className="p-4">
+        {currentStep === 1 && <SummaryPage />}
+
+        {currentStep === 2 && !isAuthenticated && (
+          <>
+            {isLogin ? <LoginPage /> : <RegistrationPage />}
+            <div className="text-center text-sm text-gray-500">
+              {isLogin ? (
+                <>
+                  New to NowDigitalEasy?{" "}
+                  <button
+                    onClick={toggleLogin}
+                    className="font-bold leading-6 text-blue-600"
+                  >
+                    Sign up here
+                  </button>
+                </>
+              ) : (
+                <>
+                  Already have an account?{" "}
+                  <button
+                    onClick={toggleLogin}
+                    className="font-bold leading-6 text-blue-600"
+                  >
+                    Sign in
+                  </button>
+                </>
+              )}
             </div>
-          </div>
+          </>
         )}
 
-        {currentStep === 2 && (
-          <div>
-            <LoginPage />
-            {/* <RegistrationPage /> */}
-            <div className="flex justify-center">
-              <button
-                onClick={handleNext}
-                className="mt-4 w-2/4 bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
-              >
-                Next
-              </button>
-            </div>
-          </div>
-        )}
+        {currentStep === 3 && <PaymentPage />}
 
-        {currentStep === 3 && (
-          <div>
-            <RegistrationPage />
-            <div className="flex justify-center">
-              <button
-                onClick={handleNext}
-                className="mt-4 w-2/4 bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
-              >
-                Next
-              </button>
-            </div>
-          </div>
-        )}
-        {currentStep === 4 && (
-          <div>
-            <PaymentPage />
-            <div className="flex justify-center">
-              <button
-                onClick={() => {
-                  dispatch(setIsSidebarOpen(!isSidebarOpen));
-                }}
-                className="mt-4 w-2/4 bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
-              >
-                Done
-              </button>
-            </div>
-          </div>
-        )}
+        <div className="flex justify-center mt-4">
+          <button
+            onClick={handleNext}
+            className="w-2/4 bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+          >
+            {currentStep === 3 ? "Pay" : "Contiune"}
+          </button>
+        </div>
       </div>
     </div>
   );

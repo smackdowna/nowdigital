@@ -5,6 +5,7 @@ import { toast } from 'sonner';
 import { useTransition, animated } from 'react-spring';
 import { useAppDispatch } from '../store/store';
 import { loginSuccess, loginFailure } from '../store/authSlice';
+import { redirect } from 'next/navigation';
 
 interface LoginProps {
     onClose: () => void;
